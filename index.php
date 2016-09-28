@@ -7,14 +7,22 @@
  * radius of size $distribution around $mean independently for each RGB channel.
  * If this interval exceeds [0, 255], it is truncated accordingly beforehand.
  *
- * @param   int     $mean       Average brightness of returned color, must be
- *                              in [0, 255].
- * @param   int     $deviation  Maximum devation from the average.
+ * @param   int       $mean       Average brightness of returned color, must be
+ *                                in [0, 255].
+ * @param   int|int[] $deviation  Maximum devation from the average. If an array
+ *                                is passed, the first value is the negative
+ *                                deviation and the second value is the positive
+ *                                deviation.
  * @return  string
  */
 function randomColor($mean, $deviation) {
-    $lowerBound = $mean - $deviation;
-    $upperBound = $mean + $deviation;
+    if (is_array($deviation)) {
+        $lowerBound = $mean - $deviation[0];
+        $upperBound = $mean + $deviation[1];
+    } else {
+        $lowerBound = $mean - $deviation;
+        $upperBound = $mean + $deviation;
+    }
     if ($lowerBound < 0) $lowerBound = 0;
     if ($upperBound > 255) $upperBound = 255;
 
@@ -26,13 +34,16 @@ function randomColor($mean, $deviation) {
     return $color;
 }
 
+$backgroundColor = randomColor(25, [15, 20]);
+
 ?><!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="<?= $backgroundColor ?>">
         <title>Noah Doersing - HEJNOAH</title>
-        <link href="http://fonts.googleapis.com/css?family=Arimo" rel="stylesheet" type="text/css">
+        <link href="//fonts.googleapis.com/css?family=Arimo" rel="stylesheet" type="text/css">
         <style type="text/css">
             * {
                 font-weight: normal;
@@ -46,8 +57,14 @@ function randomColor($mean, $deviation) {
                 font-size: 16px;
                 color: #eee;
                 -webkit-font-smoothing: antialiased;
-                background-color: <?php echo randomColor(30, 30); ?>;
+                background-color: <?= $backgroundColor ?>;
                 padding: 5em;
+            }
+            #poly {
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: -1;
             }
             header {
                 margin-bottom: 2em;
@@ -91,6 +108,61 @@ function randomColor($mean, $deviation) {
         </style>
     </head>
     <body>
+        <canvas id="poly"></canvas>
+        <script>
+            // set dimensions
+            poly = document.getElementById("poly")
+            c = poly.getContext("2d")
+
+            w = window.innerWidth
+            h = window.innerHeight
+
+            if (window.devicePixelRatio) {
+                r = window.devicePixelRatio
+                poly.style.width = w + "px"
+                poly.style.height = h + "px"
+                poly.setAttribute("width", w * r)
+                poly.setAttribute("height", h * r)
+                w = w * r
+                h = h * r
+            } else {
+                poly.setAttribute("width", w)
+                poly.setAttribute("height", h)
+            }
+
+            // randomness
+            r = function() { return Math.random() }
+            rr = function() { return 2 * r() - r() }
+            rsq = function() { return r() * r() }
+
+            // draw a random number of triangles with their vertices at random
+            // coordinates and a random stroke width and opacity, simulating
+            // depth
+            for (i = 0; i < 400 + r() * 2000; i++) {
+                c.globalAlpha = r()
+                c.beginPath()
+                c.moveTo(rr() * w, rr() * h)
+                c.lineTo(rr() * w, rr() * h)
+                c.lineTo(rr() * w, rr() * h)
+                c.closePath()
+                c.lineWidth = rsq() * 20
+                c.stroke()
+            }
+
+            /*
+            // via http://stackoverflow.com/a/13542669
+            function shadeColor2(color, percent) {
+                var f=parseInt(color.slice(1),16),t=percent<0?0:255,p=percent<0?percent*-1:percent,R=f>>16,G=f>>8&0x00FF,B=f&0x0000FF;
+                return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
+            }
+
+            // flicker url bar on android
+            metaArray = document.getElementsByName("theme-color")
+            setInterval(function() {
+                metaArray[0].content = shadeColor2("<?= $backgroundColor ?>", (r() - 0.5) * 0.1)
+            }, 200)
+            */
+        </script>
         <header>
             <!-- see logo.php -->
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="89" height="27">
