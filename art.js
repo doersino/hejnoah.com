@@ -39,6 +39,7 @@ if (window.devicePixelRatio) {
 // randomness
 r = function() { return Math.random() }
 rr = function() { return 2 * r() - r() }
+rs = function() { return r() - 0.5 }
 rsq = function() { return r() * r() }
 
 // euclidean distance
@@ -72,16 +73,30 @@ function shadeColor2(color, percent) {
     return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
 }
 
+// clamp
+function clamp(n, min, max) {
+    if (n < min) {
+        return min
+    } else if (n > max) {
+        return max
+    }
+    return n;
+}
+
+function negate(n) {
+    return -n;
+}
+
 // -----------------------------------------------------------------------------
 
-art = Math.floor(r() * 2)
+art = Math.floor(r() * 4)
 
 switch(art) {
 
     // draw a random number of triangles with their vertices at random
     // coordinates and a random stroke width and opacity, simulating depth
     case 0:
-        for (i = 0; i < 400 + r() * 2000; i++) {
+        for (i = 0; i < 300 + r() * 1500; i++) {
             c.globalAlpha = r()
             c.beginPath()
             c.moveTo(rr() * w, rr() * h)
@@ -89,6 +104,7 @@ switch(art) {
             c.lineTo(rr() * w, rr() * h)
             c.closePath()
             c.lineWidth = rsq() * 20
+            c.strokeStyle = shadeColor2(bg, -0.7);
             c.stroke()
         }
     break
@@ -131,9 +147,9 @@ switch(art) {
         }
 
         // generate rotational speed
-        speed = []
+        speeds = []
         for (i = 0; i < points.length; i++) {
-            speed.push(r() - 0.5)
+            speeds.push(rs())
         }
 
         // main loop
@@ -149,23 +165,143 @@ switch(art) {
                 p3 = [p[0]-22+rr()*2, p[1]+25]
 
                 // rotate based on speed
-                speed[i] = 0
-                p1 = rotate(p, p1, angles[i] + n * 0.2 * speed[i])
-                p2 = rotate(p, p2, angles[i] + n * 0.2 * speed[i])
-                p3 = rotate(p, p3, angles[i] + n * 0.2 * speed[i])
+                speeds[i] = 0
+                p1 = rotate(p, p1, angles[i] + n * 0.2 * speeds[i])
+                p2 = rotate(p, p2, angles[i] + n * 0.2 * speeds[i])
+                p3 = rotate(p, p3, angles[i] + n * 0.2 * speeds[i])
 
-                // draw triangles
+                // draw triangle
                 c.beginPath()
                 c.moveTo(p1[0], p1[1])
                 c.lineTo(p2[0], p2[1])
                 c.lineTo(p3[0], p3[1])
                 c.closePath()
                 c.lineWidth = 5
-                c.strokeStyle = shadeColor2(bg, (r() - 0.5) * 0.05 + 0.1);
+                c.strokeStyle = shadeColor2(bg, (rs()) * 0.05 + 0.1);
                 c.stroke()
             }
             n++
         }, 100)
+    break
+
+    // brownian motion
+    case 2:
+
+        // generate points
+        points = []
+        for (i = 0; i < r() * 2000; i++) {
+            x = r() * w
+            y = r() * h
+            p = [x,y]
+            points.push(p)
+        }
+
+        // generate initial distances
+        dists = []
+        for (i = 0; i < points.length; i++) {
+            dists.push(r())
+        }
+
+        // generate initial speed in x and y
+        speeds = []
+        for (i = 0; i < points.length; i++) {
+            speeds.push([rs(), rs()])
+        }
+
+        // main loop
+        setInterval(function() {
+            c.clearRect(0, 0, w, h)
+            for (i = 0; i < points.length; i++) {
+                p = points[i]
+
+                // move particle
+                dists[i] = clamp(dists[i] + (rs()) * 0.1, 0.2, 1)
+                speeds[i] = [clamp(speeds[i][0] + (rs()) * 0.2, -1, 1), clamp(speeds[i][1] + (rs()) * 0.2, -1, 1)]
+                x = p[0] + speeds[i][0] * 5
+                y = p[1] + speeds[i][1] * 5
+                if (x < -50 || x > w + 50 || y < 50 || y > h + 50) {
+                    speeds[i] = speeds[i].map(negate)
+                }
+                points[i] = [x,y]
+
+                // draw particle
+                c.beginPath()
+                c.arc(x, y, dists[i] * 10, 0, 2 * Math.PI, false);
+                c.closePath()
+                c.lineWidth = 20 * dists[i]
+                c.strokeStyle = shadeColor2(bg, -0.7);
+                //c.strokeStyle = shadeColor2(bg, (rs()) * 0.02 + 0.1);
+                c.stroke()
+            }
+        }, 50)
+
+    break
+
+    // rain drops
+    case 3:
+
+        // generate points
+        points = []
+        for (i = 0; i < 50; i++) {
+            x = r() * w
+            y = r() * h
+            p = [x,y]
+            points.push(p)
+        }
+
+        age = []
+        for (i = 0; i < points.length; i++) {
+            age[i] = r() * 100 + 1
+        }
+
+        // main loop
+        setInterval(function() {
+            c.clearRect(0, 0, w, h)
+            for (i = 0; i < points.length; i++) {
+                p = points[i]
+                x = p[0]
+                y = p[1]
+                a = age[i] + 1
+                if (a > 150) {
+                    a = 1;
+                    x = r() * w
+                    y = r() * h
+                    points[i] = [x,y]
+                }
+                age[i] = a
+
+                // move particle
+                console.log("test")
+
+
+                // draw particle
+                dist = r()
+
+                //c.globalAlpha = clamp(20 / a, 0, 1)
+                if (a >= 20) {
+                    prev = 0
+                    len = clamp(1/20 * 2 * Math.PI * (1 - a/100), 0, 1)
+                    for (j = 0; j < 20; j++) {
+                        c.beginPath()
+                        c.arc(x, y, 4 * a, prev, prev + len, false);
+                        c.closePath()
+                        c.lineWidth = 1
+                        c.strokeStyle = shadeColor2(bg, 0.15);
+                        c.stroke()
+
+                        prev += 1/20 * 2 * Math.PI
+                    }
+                } else {
+                    c.beginPath()
+                    c.arc(x, y, 4 * a, 0, 2 * Math.PI, false);
+                    c.closePath()
+                    c.lineWidth = 20 / (Math.log2(a)*4.3219)
+                    c.strokeStyle = shadeColor2(bg, 0.15);
+                    c.stroke()
+                }
+            }
+        }, 50)
+
     break
 }
 
@@ -179,6 +315,6 @@ function shadeColor2(color, percent) {
 // flicker url bar on android
 metaArray = document.getElementsByName("theme-color")
 setInterval(function() {
-    metaArray[0].content = shadeColor2(bg, (r() - 0.5) * 0.1)
+    metaArray[0].content = shadeColor2(bg, (rs()) * 0.1)
 }, 200)
 */
