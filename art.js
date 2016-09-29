@@ -57,8 +57,8 @@ function rotate(o, p, angle) {
     p[1] -= o[1];
 
     // rotate point
-    xnew = p[0] * c - p[1] * s;
-    ynew = p[0] * s + p[1] * c;
+    var xnew = p[0] * c - p[1] * s;
+    var ynew = p[0] * s + p[1] * c;
 
     // translate point back:
     p[0] = xnew + o[0];
@@ -87,9 +87,37 @@ function negate(n) {
     return -n;
 }
 
+function argmin(arr) {
+    var min = arr[0]
+    var arg = 0
+
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] < min) {
+            min = arr[i]
+            arg = i
+        }
+    }
+
+    return arg
+}
+
+function argmax(arr) {
+    var max = arr[0]
+    var arg = 0
+
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] > max) {
+            max = arr[i]
+            arg = i
+        }
+    }
+
+    return arg
+}
+
 // -----------------------------------------------------------------------------
 
-art = Math.floor(r() * 4)
+art = Math.floor(r() * 5)
 
 switch(art) {
 
@@ -110,6 +138,7 @@ switch(art) {
     break
 
     // https://en.wikipedia.org/wiki/Supersampling#Poisson_disc
+    // jittery triangles
     case 1:
 
         // generate points
@@ -290,6 +319,71 @@ switch(art) {
             }
         }, 50)
 
+    break
+
+    // https://en.wikipedia.org/wiki/Supersampling#Poisson_disc
+    // each point is connected with its closest two neighbors
+    case 4:
+
+        // generate points
+        points = []
+        i = 0
+        grace = 0
+        while (true) {
+            x = r() * (w + 100) - 50
+            y = r() * (h + 100) - 50
+            p = [x,y]
+
+            okay = true
+            for (j = 0; j < points.length; j++) {
+                if (eucl(points[j], p) < 100) {
+                    okay = false
+                    break
+                }
+            }
+            if (!okay && j == points.length - 1) {
+                grace++
+                if (grace > 4) {
+                    break
+                }
+            }
+            if (okay) {
+                points.push(p)
+                i++
+            }
+        }
+
+        triangles = []
+        for (i = 0; i < points.length; i++) {
+
+            // compute distances to all other points
+            dists = []
+            for (j = 0; j < points.length; j++) {
+                dists[j] = eucl(points[i], points[j])
+            }
+
+            // get closest and second closest neighbor, excluding itself
+            dists[i] = 99999
+            closest = argmin(dists)
+            dists[closest] = 99999
+            secondClosest = argmin(dists)
+
+            // push array of all three onto triangles
+            triangles.push([points[i], points[closest], points[secondClosest]])
+        }
+
+        // draw triangles
+        for (i = 0; i < triangles.length; i++) {
+            c.globalAlpha = 1 - rsq()
+            c.beginPath()
+            c.moveTo(triangles[i][0][0], triangles[i][0][1])
+            c.lineTo(triangles[i][1][0], triangles[i][1][1])
+            c.lineTo(triangles[i][2][0], triangles[i][2][1])
+            c.closePath()
+            c.lineWidth = 3
+            c.strokeStyle = shadeColor2(bg, 0.1);
+            c.stroke()
+        }
     break
 }
 
