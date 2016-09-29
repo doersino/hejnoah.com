@@ -41,6 +41,7 @@ r = function() { return Math.random() }
 rr = function() { return 2 * r() - r() }
 rs = function() { return r() - 0.5 }
 rsq = function() { return r() * r() }
+rssq = function() { return rs() * rs() }
 
 // euclidean distance
 function eucl(p, q) {
@@ -117,7 +118,8 @@ function argmax(arr) {
 
 // -----------------------------------------------------------------------------
 
-art = Math.floor(r() * 5)
+art = Math.floor(r() * 6)
+art = 5
 
 switch(art) {
 
@@ -384,6 +386,51 @@ switch(art) {
             c.strokeStyle = shadeColor2(bg, 0.1);
             c.stroke()
         }
+    break
+
+    // starfield
+    case 5:
+
+        // generate points
+        points = []
+        for (i = 0; i < 100 + rs() * 30; i++) {
+            px = w/2 + rssq() * w/2
+            py = h/2 + rssq() * h/2
+            points.push([px,py])
+        }
+
+        mid = [w/2, h/2]
+        mx = mid[0]
+        my = mid[1]
+
+        // main loop
+        setInterval(function() {
+            c.clearRect(0, 0, w, h)
+            for (i = 0; i < points.length; i++) {
+                p = points[i]
+                px = p[0]
+                py = p[1]
+
+                // reset star
+                while (px < -25 || px > w + 25 || py < -25 || py > h + 25 || (px == w/2 && py == h/2)) {
+                    px = w/2 + rs() * w/10
+                    py = h/2 + rs() * h/10
+                    points[i] = [px,py]
+                }
+
+                // draw star
+                c.beginPath()
+                c.arc(px, py, 50 * (Math.abs(px-mx) + Math.abs(py-my)) / (w + h), 0, 2 * Math.PI, false);
+                c.fillStyle = shadeColor2(bg, 0.1);
+                c.fill()
+
+                // update star
+                nx = px + (px - mx) * 0.05
+                ny = py + (py - my) * 0.05
+                points[i] = [nx,ny]
+            }
+        }, 40)
+
     break
 }
 
