@@ -118,8 +118,7 @@ function argmax(arr) {
 
 // -----------------------------------------------------------------------------
 
-art = Math.floor(r() * 6)
-art = 2
+art = Math.floor(r() * 7)
 
 switch(art) {
 
@@ -159,13 +158,12 @@ switch(art) {
                     break
                 }
             }
-            if (!okay && j == points.length - 1) {
+            if (!okay) {
                 grace++
-                if (grace > 3) {
+                if (grace > 250) {
                     break
                 }
-            }
-            if (okay) {
+            } else {
                 points.push(p)
                 i++
             }
@@ -319,7 +317,7 @@ switch(art) {
                     }
                 }
             }
-        }, 50)
+        }, 35)
 
     break
 
@@ -343,13 +341,12 @@ switch(art) {
                     break
                 }
             }
-            if (!okay && j == points.length - 1) {
+            if (!okay) {
                 grace++
-                if (grace > 4) {
+                if (grace > 100) {
                     break
                 }
-            }
-            if (okay) {
+            } else {
                 points.push(p)
                 i++
             }
@@ -425,11 +422,95 @@ switch(art) {
                 c.fill()
 
                 // update star
-                nx = px + (px - mx) * 0.05
-                ny = py + (py - my) * 0.05
+                nx = px + (px - mx) * 0.03
+                ny = py + (py - my) * 0.03
                 points[i] = [nx,ny]
             }
-        }, 40)
+        }, 25)
+
+    break
+
+    // cogs
+    case 6:
+
+        // generate radiuses
+        radiuses = []
+        for (i = 0; i < 1000; i++) {
+            radiuses[i] = 50 + r() * 60
+        }
+
+        // generate center points
+        points = []
+        i = 0
+        grace = 0
+        while (true) {
+            x = r() * w
+            y = r() * h
+            p = [x,y]
+
+            okay = true
+            for (j = 0; j < points.length; j++) {
+                if (eucl(points[j], p) < radiuses[i] + radiuses[j] + 5) {
+                    okay = false
+                    break
+                }
+            }
+            if (!okay) {
+                grace++
+                if (grace > 100) {
+                    break
+                }
+            } else {
+                points.push(p)
+                i++
+            }
+        }
+
+        // generate rotational speed
+        speeds = []
+        for (i = 0; i < points.length; i++) {
+            speeds.push(rs() / 10)
+        }
+
+        // generate initial rotation angles
+        angles = []
+        for (i = 0; i < points.length; i++) {
+            angles.push(r() * 2 * Math.PI)
+        }
+
+        // main loop
+        setInterval(function() {
+            c.clearRect(0, 0, w, h)
+            for (i = 0; i < points.length; i++) {
+                p = points[i]
+                x = p[0]
+                y = p[1]
+                r = radiuses[i]
+                s = speeds[i]
+
+                a = angles[i]
+                angles[i] = a + s
+
+                prev = a
+                len = 1/20 * 2 * Math.PI * 0.5
+                for (j = 0; j < 20; j++) {
+                    c.beginPath()
+                    c.arc(x, y, r, prev, prev + len, false);
+                    c.arc(x, y, r - r / 7, prev + len, prev + 2 * len, false);
+                    c.arc(x, y, r, prev + 2 * len, prev + 3 * len, false);
+                    c.lineWidth = 2
+                    c.strokeStyle = shadeColor2(bg, 0.12);
+                    c.stroke()
+
+                    prev += 1/20 * 2 * Math.PI
+                }
+                c.beginPath()
+                c.arc(x, y, r / 10, 0, 2 * Math.PI, false);
+                c.lineWidth = 2
+                c.strokeStyle = shadeColor2(bg, 0.1);
+                c.stroke()
+            }
+        }, 50)
 
     break
 
