@@ -119,6 +119,7 @@ function argmax(arr) {
 // -----------------------------------------------------------------------------
 
 art = Math.floor(r() * 6)
+art = 2
 
 switch(art) {
 
@@ -126,14 +127,14 @@ switch(art) {
     // coordinates and a random stroke width and opacity, simulating depth
     case 0:
         for (i = 0; i < 300 + r() * 1500; i++) {
-            c.globalAlpha = r()
+            c.globalAlpha = 0.33 * (2 * rsq() + r())
             c.beginPath()
             c.moveTo(rr() * w, rr() * h)
             c.lineTo(rr() * w, rr() * h)
             c.lineTo(rr() * w, rr() * h)
             c.closePath()
             c.lineWidth = rsq() * 20
-            c.strokeStyle = shadeColor2(bg, -0.7);
+            c.strokeStyle = shadeColor2(bg, 0.1);
             c.stroke()
         }
     break
@@ -226,10 +227,10 @@ switch(art) {
             points.push(p)
         }
 
-        // generate initial distances
-        dists = []
+        // generate initial sizes
+        sizes = []
         for (i = 0; i < points.length; i++) {
-            dists.push(r())
+            sizes.push(r())
         }
 
         // generate initial speed in x and y
@@ -245,21 +246,21 @@ switch(art) {
                 p = points[i]
 
                 // move particle
-                dists[i] = clamp(dists[i] + (rs()) * 0.1, 0.2, 1)
+                sizes[i] = clamp(sizes[i] + (rs()) * 0.1, 0.2, 1.5)
                 speeds[i] = [clamp(speeds[i][0] + (rs()) * 0.2, -1, 1), clamp(speeds[i][1] + (rs()) * 0.2, -1, 1)]
                 x = p[0] + speeds[i][0] * 5
                 y = p[1] + speeds[i][1] * 5
-                if (x < -50 || x > w + 50 || y < 50 || y > h + 50) {
+                if (x < -50 || x > w + 50 || y < -50 || y > h + 50) {
                     speeds[i] = speeds[i].map(negate)
                 }
                 points[i] = [x,y]
 
                 // draw particle
                 c.beginPath()
-                c.arc(x, y, dists[i] * 10, 0, 2 * Math.PI, false);
+                c.arc(x, y, sizes[i] * 10, 0, 2 * Math.PI, false);
                 c.closePath()
-                c.lineWidth = 20 * dists[i]
-                c.strokeStyle = shadeColor2(bg, -0.7);
+                c.lineWidth = 20 * sizes[i]
+                c.strokeStyle = shadeColor2(bg, 0.1);
                 //c.strokeStyle = shadeColor2(bg, (rs()) * 0.02 + 0.1);
                 c.stroke()
             }
