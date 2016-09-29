@@ -431,6 +431,70 @@ switch(art) {
         }, 40)
 
     break
+
+    /*
+    // lattice
+    case 6:
+
+        // generate points
+        points = []
+        sidelen = Math.sqrt(Math.pow(w, 2) + Math.pow(h, 2))
+        for (i = 0; i < 50; i++) {
+            //px = -sidelen/25 + i * sidelen/50
+            px = w/2 - sidelen/2 + i * sidelen/50
+            points.push([px,h/2+sidelen/2])
+            points.push([px,h/2+sidelen/2])
+            points.push([px+1,h/2-sidelen/2])
+            points.push([px+1,h/2+sidelen/2])
+        }
+        points2 = points.slice()
+
+        // define middle
+        mid = [w/2, h/2]
+
+        // set initial angle
+        angle = 0
+        angle2 = 1
+
+        // main loop
+        setInterval(function() {
+            c.clearRect(0, 0, w, h)
+            c.beginPath()
+            for (i = 0; i < points.length; i++) {
+                p = points[i].slice()
+                p = rotate(mid, p, angle)
+
+                if (i == 0) {
+                    c.moveTo(p[0], p[1])
+                } else {
+                    c.lineTo(p[0], p[1])
+                }
+            }
+            c.lineWidth = 10
+            c.strokeStyle = shadeColor2(bg, 0.1);
+            c.stroke()
+            angle = (angle + 0.004) % (2 * Math.PI)
+
+            c.beginPath()
+            c.moveTo(0,0)
+            for (i = 0; i < points2.length; i++) {
+                p2 = points2[i].slice()
+                p2 = rotate(mid, p2, angle2)
+
+                if (i == 0) {
+                    c.moveTo(p2[0], p2[1])
+                } else {
+                    c.lineTo(p2[0], p2[1])
+                }
+            }
+            c.lineWidth = 10
+            c.strokeStyle = shadeColor2(bg, 0.1);
+            c.stroke()
+            angle2 = (angle2 - 0.01) % (2 * Math.PI)
+        }, 20)
+
+    break
+    */
 }
 
 /*
