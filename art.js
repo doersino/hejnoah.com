@@ -271,7 +271,7 @@ switch(art) {
 
         // generate points
         points = []
-        for (i = 0; i < 50; i++) {
+        for (i = 0; i < (w * h) / 100000; i++) {
             x = r() * w
             y = r() * h
             p = [x,y]
@@ -309,7 +309,7 @@ switch(art) {
                     for (j = 0; j < 20; j++) {
                         c.beginPath()
                         c.arc(x, y, 4 * a, prev, prev + len, false);
-                        c.lineWidth = 1
+                        c.lineWidth = 1.5
                         c.strokeStyle = shadeColor2(bg, 0.15);
                         c.stroke()
 
