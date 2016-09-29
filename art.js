@@ -237,7 +237,7 @@ switch(art) {
 
     break
 
-    // rain drops
+    // rain drops on water
     case 3:
 
         // generate points
@@ -249,9 +249,10 @@ switch(art) {
             points.push(p)
         }
 
+        // generate initial age
         age = []
         for (i = 0; i < points.length; i++) {
-            age[i] = r() * 100 + 1
+            age[i] = r() * 120 + 1
         }
 
         // main loop
@@ -262,7 +263,9 @@ switch(art) {
                 x = p[0]
                 y = p[1]
                 a = age[i] + 1
-                if (a > 150) {
+
+                // reset droplet
+                if (a > 100 + r() * 100) {
                     a = 1;
                     x = r() * w
                     y = r() * h
@@ -270,34 +273,19 @@ switch(art) {
                 }
                 age[i] = a
 
-                // move particle
-                console.log("test")
-
-
-                // draw particle
-                dist = r()
-
-                //c.globalAlpha = clamp(20 / a, 0, 1)
-                if (a >= 20) {
+                if (a <= 100) {
+                    //c.globalAlpha = clamp(20 / a, 0, 1)
                     prev = 0
-                    len = clamp(1/20 * 2 * Math.PI * (1 - a/100), 0, 1)
+                    len = clamp(1/20 * 2 * Math.PI * (1 - (clamp(a-20, 0, 100))/(100-20)), 0, 1)
                     for (j = 0; j < 20; j++) {
                         c.beginPath()
                         c.arc(x, y, 4 * a, prev, prev + len, false);
-                        c.closePath()
                         c.lineWidth = 1
                         c.strokeStyle = shadeColor2(bg, 0.15);
                         c.stroke()
 
                         prev += 1/20 * 2 * Math.PI
                     }
-                } else {
-                    c.beginPath()
-                    c.arc(x, y, 4 * a, 0, 2 * Math.PI, false);
-                    c.closePath()
-                    c.lineWidth = 20 / (Math.log2(a)*4.3219)
-                    c.strokeStyle = shadeColor2(bg, 0.15);
-                    c.stroke()
                 }
             }
         }, 50)
