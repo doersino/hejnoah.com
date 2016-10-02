@@ -118,29 +118,13 @@ function argmax(arr) {
 
 // -----------------------------------------------------------------------------
 
-art = Math.floor(r() * 7)
+art = Math.floor(r() * 6)
 
 switch(art) {
 
-    // draw a random number of triangles with their vertices at random
-    // coordinates and a random stroke width and opacity, simulating depth
-    case 0:
-        for (i = 0; i < 300 + r() * 1500; i++) {
-            c.globalAlpha = 0.33 * (2 * rsq() + r())
-            c.beginPath()
-            c.moveTo(rr() * w, rr() * h)
-            c.lineTo(rr() * w, rr() * h)
-            c.lineTo(rr() * w, rr() * h)
-            c.closePath()
-            c.lineWidth = rsq() * 20
-            c.strokeStyle = shadeColor2(bg, 0.1);
-            c.stroke()
-        }
-    break
-
     // https://en.wikipedia.org/wiki/Supersampling#Poisson_disc
     // jittery triangles
-    case 1:
+    case 0:
 
         // generate points
         points = []
@@ -214,7 +198,7 @@ switch(art) {
     break
 
     // brownian motion
-    case 2:
+    case 1:
 
         // generate points
         points = []
@@ -267,7 +251,7 @@ switch(art) {
     break
 
     // rain drops on water
-    case 3:
+    case 2:
 
         // generate points
         points = []
@@ -323,7 +307,7 @@ switch(art) {
 
     // https://en.wikipedia.org/wiki/Supersampling#Poisson_disc
     // each point is connected with its closest two neighbors
-    case 4:
+    case 3:
 
         // generate points
         points = []
@@ -386,7 +370,7 @@ switch(art) {
     break
 
     // starfield
-    case 5:
+    case 4:
 
         // generate points
         points = []
@@ -431,7 +415,7 @@ switch(art) {
     break
 
     // cogs
-    case 6:
+    case 5:
 
         // generate radiuses
         radiuses = []
@@ -515,8 +499,24 @@ switch(art) {
     break
 
     /*
-    // lattice
+    // draw a random number of triangles with their vertices at random
+    // coordinates and a random stroke width and opacity, simulating depth
     case 6:
+        for (i = 0; i < 300 + r() * 1500; i++) {
+            c.globalAlpha = 0.33 * (2 * rsq() + r())
+            c.beginPath()
+            c.moveTo(rr() * w, rr() * h)
+            c.lineTo(rr() * w, rr() * h)
+            c.lineTo(rr() * w, rr() * h)
+            c.closePath()
+            c.lineWidth = rsq() * 20
+            c.strokeStyle = shadeColor2(bg, 0.1);
+            c.stroke()
+        }
+    break
+
+    // lattice
+    case 7:
 
         // generate points
         points = []
