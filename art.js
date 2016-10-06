@@ -24,17 +24,16 @@ w = window.innerWidth
 h = window.innerHeight
 
 if (window.devicePixelRatio) {
-    r = window.devicePixelRatio
+    devPxRatio = window.devicePixelRatio
     poly.style.width = w + "px"
     poly.style.height = h + "px"
-    poly.setAttribute("width", w * r)
-    poly.setAttribute("height", h * r)
-    w = w * r
-    h = h * r
+    w = w * devPxRatio
+    h = h * devPxRatio
 } else {
-    poly.setAttribute("width", w)
-    poly.setAttribute("height", h)
+    devPxRatio = 1
 }
+poly.setAttribute("width", w)
+poly.setAttribute("height", h)
 
 // randomness
 r = function() { return Math.random() }
@@ -66,6 +65,14 @@ function rotate(o, p, angle) {
     p[1] = ynew + o[1];
 
     return p;
+}
+
+function rotateMany(o, ps, angle) {
+    var ret = []
+    for (var i = 0; i < ps.length; i++) {
+        ret.push(rotate(o, ps[i], angle))
+    }
+    return ret
 }
 
 // change color brightness, via http://stackoverflow.com/a/13542669
@@ -116,9 +123,32 @@ function argmax(arr) {
     return arg
 }
 
+function pMinus(p, q) {
+    return [p[0]-q[0], p[1]-q[1]]
+}
+
 // -----------------------------------------------------------------------------
 
-art = Math.floor(r() * 6)
+// via http://stackoverflow.com/a/11381730
+function mobile() {
+    return (navigator.userAgent.match(/Android/i)
+         || navigator.userAgent.match(/webOS/i)
+         || navigator.userAgent.match(/iPhone/i)
+         || navigator.userAgent.match(/iPad/i)
+         || navigator.userAgent.match(/iPod/i)
+         || navigator.userAgent.match(/BlackBerry/i)
+         || navigator.userAgent.match(/Windows Phone/i))
+}
+
+mobileArts  = [0,1,2,3,4,5]
+desktopArts = [0,1,2,3,4,5,6]
+
+if (mobile()) {
+    arts = mobileArts
+} else {
+    arts = desktopArts
+}
+art = arts[Math.floor(Math.random()*arts.length)]
 
 switch(art) {
 
@@ -195,6 +225,7 @@ switch(art) {
             }
             n++
         }, 100)
+
     break
 
     // brownian motion
@@ -496,6 +527,59 @@ switch(art) {
             }
         }, 50)
 
+    break
+
+    // compass needles
+    case 6:
+
+        // generate points
+        points = []
+        for (x = 40; x < w + 100; x += 120) {
+            for (y = 40; y < h + 100; y += 120) {
+                points.push([x,y])
+            }
+        }
+
+        draw = function(mouseX, mouseY) {
+            for (i = 0; i < points.length; i++) {
+                p = points[i]
+                m = [w/2, h/2]
+                m = [mouseX, mouseY]
+
+                // generate needle
+                p1 = [p[0]-35, p[1]-35]
+                p2 = [p[0]+10, p[1]-10]
+                p3 = [p[0]+35, p[1]+35]
+                p4 = [p[0]-10, p[1]+10]
+                ps = [p1, p2, p3, p4]
+
+                // rotate
+                mi = pMinus(p, m)
+                mix = mi[0]
+                miy = mi[1]
+                ps = rotateMany(p, ps, 2 * Math.PI * (-0.125) + Math.atan(miy / mix))
+
+                // draw needle
+                c.beginPath()
+                c.moveTo(ps[0][0], ps[0][1])
+                c.lineTo(ps[1][0], ps[1][1])
+                c.lineTo(ps[2][0], ps[2][1])
+                c.lineTo(ps[3][0], ps[3][1])
+                c.closePath()
+                c.fillStyle = shadeColor2(bg, 0.1);
+                c.fill()
+            }
+        }
+
+        draw(w/2, h/2)
+
+        document.onmousemove = function(e) {
+            mouseX = e.clientX * devPxRatio
+            mouseY = e.clientY * devPxRatio
+
+            c.clearRect(0, 0, w, h)
+            draw(mouseX, mouseY)
+        }
     break
 
     /*
