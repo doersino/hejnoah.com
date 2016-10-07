@@ -41,6 +41,7 @@ rr = function() { return 2 * r() - r() }
 rs = function() { return r() - 0.5 }
 rsq = function() { return r() * r() }
 rssq = function() { return rs() * rs() }
+rorbit = function() { var x = r(); return 0.2 + (1 + Math.pow(x, 1/4) - Math.pow(1-x, 1/6)) / 2.5 }
 
 // euclidean distance
 function eucl(p, q) {
@@ -140,8 +141,8 @@ function mobile() {
          || navigator.userAgent.match(/Windows Phone/i))
 }
 
-mobileArts  = [0,1,2,3,4,5]
-desktopArts = [0,1,2,3,4,5,6]
+mobileArts  = [0,1,2,3,4,5,  7]
+desktopArts = [0,1,2,3,4,5,6,7]
 
 if (mobile()) {
     arts = mobileArts
@@ -589,6 +590,119 @@ switch(art) {
             c.clearRect(0, 0, w, h)
             draw(mouseX, mouseY)
         }
+    break
+
+    // orbiting asteroids
+    case 7:
+
+        // generate points
+        m = [w/2, h/2]
+        points = []
+        radiuses = []
+        i = 0
+        grace = 0
+        while (true) {
+            radius = rorbit()
+            angle = r() * 2 * Math.PI
+            x = w/2 + radius * w/2
+            y = h/2 + radius * h/2
+            p = [x,y]
+            p = rotate(m, p, angle)
+
+            okay = true
+            for (j = 0; j < points.length; j++) {
+                if (eucl(points[j], p) < 50) {
+                    okay = false
+                    break
+                }
+            }
+            if (!okay) {
+                grace++
+                if (grace > 20) {
+                    break
+                }
+            } else {
+                radiuses.push(radius)
+                points.push(p)
+                i++
+            }
+        }
+
+        // generate rotational speed
+        speeds = []
+        for (i = 0; i < points.length; i++) {
+            speeds.push((3 + r()) / 1000 * (1 / radiuses[i]))
+        }
+
+        // generate shapes
+        shapes = []
+        for (i = 0; i < points.length; i++) {
+            shape = []
+            maxj = 4 + r() * 4
+            for (j = 0; j < maxj; j++) {
+                angle = (j / maxj) * 2 * Math.PI
+                radius = 5 + r() * 25
+                p = rotate([0, 0], [0, radius], angle)
+                shape.push(p)
+            }
+            shapes.push(shape)
+        }
+
+        planetRot = 0
+        planet = []
+        maxj = 10 + r() * 20
+        for (j = 0; j < maxj; j++) {
+            angle = (j / maxj) * 2 * Math.PI
+            radius = Math.min(w, h) / 10 + r() * 25
+            p = rotate([0, 0], [0, radius], angle)
+            planet.push(p)
+        }
+
+        // main loop
+        setInterval(function() {
+            c.clearRect(0, 0, w, h)
+
+            // draw planet
+            c.beginPath()
+            for (j = 0; j < planet.length; j++) {
+                q = planet[j]
+                rota = rotate([0, 0], q, -0.005)
+                if (j == 0) {
+                    c.moveTo(w/2 + rota[0], h/2 + rota[1])
+                } else {
+                    c.lineTo(w/2 + rota[0], h/2 + rota[1])
+                }
+            }
+            c.closePath()
+            c.lineWidth = 2
+            c.strokeStyle = shadeColor2(bg, 0.1);
+            c.stroke()
+
+            // draw asteroids
+            for (i = 0; i < points.length; i++) {
+                p = points[i]
+                m = [w/2, h/2]
+                //speeds[i] += rs() / 100
+                p = rotate(m, p, speeds[i])
+
+                // draw asteroids
+                c.beginPath()
+                for (j = 0; j < shapes[i].length; j++) {
+                    q = shapes[i][j]
+                    rota = rotate([0, 0], q, 0.0001 / speeds[i])
+                    if (j == 0) {
+                        c.moveTo(p[0] + rota[0], p[1] + rota[1])
+                    } else {
+                        c.lineTo(p[0] + rota[0], p[1] + rota[1])
+                    }
+                }
+                c.closePath()
+                c.lineWidth = 2
+                c.strokeStyle = shadeColor2(bg, 0.1);
+                c.stroke()
+            }
+        }, 25)
+
     break
 
     /*
