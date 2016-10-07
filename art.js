@@ -450,7 +450,7 @@ switch(art) {
 
         // generate radiuses
         radiuses = []
-        for (i = 0; i < 1000; i++) {
+        for (i = 0; i < 5000; i++) {
             radiuses[i] = 50 + r() * 60
         }
 
@@ -465,7 +465,7 @@ switch(art) {
 
             okay = true
             for (j = 0; j < points.length; j++) {
-                if (eucl(points[j], p) < radiuses[i] + radiuses[j] + 5) {
+                if (eucl(points[j], p) < radiuses[i] + radiuses[j] + 10) {
                     okay = false
                     break
                 }
@@ -493,6 +493,12 @@ switch(art) {
             angles.push(r() * 2 * Math.PI)
         }
 
+        // generate number of teeth per cog
+        teeth = []
+        for (i = 0; i < points.length; i++) {
+            teeth.push(parseInt(radiuses[i] * 0.21))
+        }
+
         // main loop
         setInterval(function() {
             c.clearRect(0, 0, w, h)
@@ -502,25 +508,28 @@ switch(art) {
                 y = p[1]
                 r = radiuses[i]
                 s = speeds[i]
+                t = teeth[i]
 
                 a = angles[i]
                 angles[i] = a + s
 
                 prev = a
-                len = 1/20 * 2 * Math.PI * 0.5
-                for (j = 0; j < 20; j++) {
+                len = 1/t * 2 * Math.PI * 0.5
+                for (j = 0; j < t; j++) {
                     c.beginPath()
                     c.arc(x, y, r, prev, prev + len, false);
-                    c.arc(x, y, r - r / 7, prev + len, prev + 2 * len, false);
+                    c.arc(x, y, r - 10, prev + len, prev + 2 * len, false);
+                    //c.arc(x, y, r - r/7, prev + len, prev + 2 * len, false);
                     c.arc(x, y, r, prev + 2 * len, prev + 3 * len, false);
                     c.lineWidth = 2
                     c.strokeStyle = shadeColor2(bg, 0.12);
                     c.stroke()
 
-                    prev += 1/20 * 2 * Math.PI
+                    prev += 1/t * 2 * Math.PI
                 }
                 c.beginPath()
-                c.arc(x, y, r / 10, 0, 2 * Math.PI, false);
+                //c.arc(x, y, r / 10, 0, 2 * Math.PI, false);
+                c.arc(x, y, 8, 0, 2 * Math.PI, false);
                 c.lineWidth = 2
                 c.strokeStyle = shadeColor2(bg, 0.1);
                 c.stroke()
