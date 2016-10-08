@@ -638,7 +638,7 @@ switch(art) {
         shapes = []
         for (i = 0; i < points.length; i++) {
             shape = []
-            maxj = 4 + r() * 4
+            maxj = 4 + r() * 4.1
             for (j = 0; j < maxj; j++) {
                 angle = (j / maxj) * 2 * Math.PI
                 radius = 5 + r() * 25
@@ -689,7 +689,7 @@ switch(art) {
                 c.beginPath()
                 for (j = 0; j < shapes[i].length; j++) {
                     q = shapes[i][j]
-                    rota = rotate([0, 0], q, 0.0001 / speeds[i])
+                    rota = rotate([0, 0], q, (Math.floor(shapes[i].length / 6) - 0.5) * 2 * 0.0001 / speeds[i])
                     if (j == 0) {
                         c.moveTo(p[0] + rota[0], p[1] + rota[1])
                     } else {
