@@ -124,6 +124,7 @@ function argmax(arr) {
     return arg
 }
 
+// where's Num instances when you need them?
 function pMinus(p, q) {
     return [p[0]-q[0], p[1]-q[1]]
 }

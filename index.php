@@ -43,7 +43,7 @@ $backgroundColor = randomColor(25, [15, 20]);
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="<?= $backgroundColor ?>">
         <title>Noah Doersing - HEJNOAH</title>
-        <link href="//fonts.googleapis.com/css?family=Arimo" rel="stylesheet" type="text/css">
+        <link href="//fonts.googleapis.com/css?family=Asap" rel="stylesheet" type="text/css">
         <style type="text/css">
             * {
                 font-weight: normal;
@@ -53,7 +53,7 @@ $backgroundColor = randomColor(25, [15, 20]);
                 box-sizing: border-box;
             }
             body {
-                font-family: Arimo, sans-serif;
+                font-family: Asap, sans-serif;
                 font-size: 16px;
                 color: #eee;
                 -webkit-font-smoothing: antialiased;
