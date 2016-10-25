@@ -1,0 +1,17 @@
+---
+layout: default
+---
+<article>
+    {{ content }}
+
+    <h2>Posts</h2>
+    <div class="postlist">
+        {% for post in site.posts %}
+
+          <p><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></p>
+        {% endfor %}
+    </div>
+
+    <p class="meta">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
+
+</article>

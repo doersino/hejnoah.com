@@ -1,0 +1,228 @@
+$break-small:  600px;
+$break-medium: 1280px;
+
+@mixin respond-to($media) {
+  @if $media == phones {
+    @media only screen and (max-width: $break-small) { @content; }
+  }
+  @else if $media == tablets {
+    @media only screen and (min-width: $break-small + 1) and (max-width: $break-medium) { @content; }
+  }
+  @else if $media == computers {
+    @media only screen and (min-width: $break-medium + 1) { @content; }
+  }
+}
+
+// -----------------------------------------------------------------------------
+
+$base-font-size:       21px;
+$base-font-family:     Asap, sans-serif;
+$small-font-size:      $base-font-size * 0.875;
+$headline-font-family: Montserrat, sans-serif;
+$code-font-family:     "Fira Code", monospace;
+
+$background-color:       white;
+$text-color:             #333;
+$link-color:             grey;
+$meta-color:             grey;
+$quote-background-color: #ddd;
+
+$content-max-width: 42rem;
+$desktop-margin:    5rem;
+$tablet-margin:     2rem;
+$phone-margin:      0.7rem;
+
+// -----------------------------------------------------------------------------
+
+@import "hejnoah/reset.scss";
+@import "hejnoah/monokai.scss";
+
+*::selection {
+  background: $text-color;
+  color: $background-color;
+}
+
+html {
+    font-size: $base-font-size;
+}
+
+body {
+    font-family: $base-font-family;
+    color: $text-color;
+    -webkit-font-smoothing: antialiased;
+    background-color: $background-color;
+
+    @include respond-to(phones) { font-size: 18px; }
+}
+
+header {
+    margin: 3rem auto;
+}
+
+.logo {
+    opacity: 0.1;
+    max-width: 100% !important;
+}
+
+article {
+    margin-bottom: 5em;
+}
+
+h1, h2, h3, p, pre, .logo, .MathJax_Display {
+    padding-left: $desktop-margin;
+    padding-right: $desktop-margin;
+    width: 100%;
+    max-width: $content-max-width;
+
+    @include respond-to(phones) {
+        padding-left: $phone-margin;
+        padding-right: $phone-margin;
+    }
+
+    @include respond-to(tablets) {
+        padding-left: $tablet-margin;
+        padding-right: $tablet-margin;
+    }
+}
+
+.bigfoot-footnote__wrapper {
+    max-width: 10000px !important;
+}
+
+.bigfoot-footnote p,
+.footnotes {
+    font-size: 0.8em;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.MathJax_Display,
+.MathJax_Preview {
+    max-width: $content-max-width !important;
+    display: block;
+}
+
+p .MathJax_Preview {
+    display: inline;
+}
+
+h1, h2 {
+    font-family: $headline-font-family;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 1.25em 0;
+}
+h2 {
+    font-size: 1em;
+    margin: 1.5em 0;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+h3 a {
+    text-decoration: none;
+}
+p, pre {
+    margin: 1em 0;
+}
+p.meta {
+    color: $meta-color;
+}
+p {
+    line-height: 1.5em;
+}
+a {
+    color: $link-color;
+
+    &:hover {
+        color: $text-color;
+    }
+}
+.postlist a {
+    color: $text-color;
+    font-size: 1.5em;
+    text-decoration: none;
+
+    &:hover {
+        color: $link-color;
+    }
+}
+code {
+    font-family: $code-font-family;
+    text-rendering: optimizeLegibility;
+    background-color: #eee;
+    padding: 0.1em 0.2em;
+
+    &:hover {
+        text-rendering: optimizeSpeed;
+    }
+}
+pre {
+    max-width: 100%;
+    @include respond-to(phones)  { font-size: 0.66em; }
+    @include respond-to(tablets) { font-size: 0.8em; }
+}
+pre code {
+    padding: 1em 1.2em !important;
+    max-width: 100%;
+    display: inline-block;
+    overflow: scroll;
+    color: white;
+}
+
+// todo: img -> up to margins or smaller
+//       wide -> up to margins
+//       full -> full width
+//       narrow -> text width
+//       left -> like now, but 67% wide on mobile
+//       right -> like now, but 67% wide on mobile
+img {
+    max-width: calc(100vw - 2 * #{$desktop-margin}) !important;
+    display: inline-block !important;
+
+    @include respond-to(phones) { max-width: 100% !important; }
+    @include respond-to(tablets) { max-width: calc(100vw - 2 * #{$tablet-margin}) !important; }
+}
+img.wide {
+    margin-left: -$desktop-margin;
+    max-width: 100vw !important;
+    width: 100vw;
+
+    @include respond-to(phones)  { margin-left: -$phone-margin; }
+    @include respond-to(tablets) { margin-left: -$tablet-margin; }
+}
+
+img.left,
+img.right {
+    max-width: 50vw;
+    width: 50vw;
+}
+
+img.left {
+    margin-left: -$desktop-margin;
+
+    @include respond-to(phones)  { margin-left: -$phone-margin; }
+    @include respond-to(tablets) { margin-left: -$tablet-margin; }
+}
+
+img.right {
+    margin-left: calc(-#{$desktop-margin} + 50vw);
+
+    @include respond-to(phones)  { margin-left: calc(-#{$phone-margin} + 50vw); }
+    @include respond-to(tablets) { margin-left: calc(-#{$tablet-margin} + 50vw); }
+}
+
+img.endimg {
+    margin-bottom: -5.5rem;
+    margin-top: 3rem;
+}
+
+img.narrow {
+    max-width: 100% !important;
+}
+
+blockquote {
+    background-color: $quote-background-color;
+    padding: 0.5em 0;
+}
