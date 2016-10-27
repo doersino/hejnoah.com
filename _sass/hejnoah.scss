@@ -175,12 +175,12 @@ pre code {
     color: white;
 }
 
-// todo: img -> up to margins or smaller
-//       wide -> up to margins
-//       full -> full width
-//       narrow -> text width
-//       left -> like now, but 67% wide on mobile
-//       right -> like now, but 67% wide on mobile
+// TODO img -> up to margins or smaller
+//      wide -> up to margins
+//      full -> full width
+//      narrow -> text width
+//      left -> like now, but 67% wide on mobile
+//      right -> like now, but 67% wide on mobile
 img {
     max-width: calc(100vw - 2 * #{$desktop-margin}) !important;
     display: inline-block !important;
