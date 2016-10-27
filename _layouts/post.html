@@ -9,36 +9,38 @@ layout: default
     <p class="meta"><time id="postedon" datetime="{{ page.date | date_to_xmlschema }}">posted <span id="postedago"></span> on {{ page.date | date: "%B %-d, %Y" }}</time></p>
     <script>
         // dynamically calculate time ago based on http://stackoverflow.com/a/3177838
-        function timeSince(date) {
+        function ago(date) {
+            function render(n, unit) {
+                return n + " " + unit + ((n == 1) ? "" : "s") + " ago";
+            }
+
             var seconds = Math.floor((new Date() - date) / 1000);
 
-            var interval = Math.floor(seconds / 31536000);
-
-            if (interval >= 1) {
-                return interval + " year" + ((interval == 1) ? "" : "s");
+            var interval = Math.floor(seconds / (60 * 60 * 24 * 30 * 365));
+            if (Math.floor(seconds / (60 * 60 * 24 * 30 * 365)) >= 1) {
+                return render(interval, "year");
             }
-            interval = Math.floor(seconds / 2592000);
+            interval = Math.floor(seconds / (60 * 60 * 24 * 30));
             if (interval >= 1) {
-                return interval + " month" + ((interval == 1) ? "" : "s");
+                return render(interval, "month");
             }
-            interval = Math.floor(seconds / 86400);
+            interval = Math.floor(seconds / (60 * 60 * 24));
             if (interval >= 1) {
-                return interval + " day" + ((interval == 1) ? "" : "s");
+                return render(interval, "day");
             }
-            interval = Math.floor(seconds / 3600);
+            interval = Math.floor(seconds / (60 * 60));
             if (interval >= 1) {
-                return interval + " hour" + ((interval == 1) ? "" : "s");
+                return render(interval, "hour");
             }
             interval = Math.floor(seconds / 60);
             if (interval >= 1) {
-                return interval + " minute" + ((interval == 1) ? "" : "s");
+                return render(interval, "minute");
             }
             interval = Math.floor(seconds);
-            return interval + " second" + ((interval == 1) ? "" : "s");
+            return render(interval, "second");
         }
 
-        var dt = document.getElementById("postedon").getAttribute("datetime");
-        var da = Date.parse(dt);
-        document.getElementById("postedago").innerHTML = timeSince(da) + " ago";
+        var date = Date.parse(document.getElementById("postedon").getAttribute("datetime"));
+        document.getElementById("postedago").innerHTML = ago(date);
     </script>
 </article>
