@@ -20,7 +20,6 @@ GEM
       jekyll (~> 3.3)
     jekyll-sass-converter (1.4.0)
       sass (~> 3.4)
-    jekyll-timeago (0.9.1)
     jekyll-watch (1.5.0)
       listen (~> 3.0, < 3.1)
     kramdown (1.12.0)
@@ -44,7 +43,6 @@ PLATFORMS
 DEPENDENCIES
   jekyll (= 3.3.0)
   jekyll-feed (~> 0.6)
-  jekyll-timeago
 
 RUBY VERSION
    ruby 2.0.0p648
