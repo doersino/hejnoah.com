@@ -46,8 +46,8 @@ This [Jekyll](https://jekyllrb.com) blog is hosted on [Uberspace](https://ubersp
         } else {
             var dpr = 1;
         }
-        canvas.setAttribute("width", w)
-        canvas.setAttribute("height", h)
+        canvas.setAttribute("width", w);
+        canvas.setAttribute("height", h);
 
         var c = canvas.getContext("2d");
 
