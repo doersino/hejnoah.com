@@ -17,7 +17,7 @@ $break-medium: 1280px;
 
 $base-font-size:       21px;
 $base-font-family:     Asap, sans-serif;
-$small-font-size:      $base-font-size * 0.875;
+$small-font-size:      $base-font-size * 0.8;
 $headline-font-family: Montserrat, sans-serif;
 $code-font-family:     "Fira Code", monospace;
 
@@ -88,7 +88,7 @@ h1, h2, h3, p, pre, .logo, .MathJax_Display {
 
 .bigfoot-footnote p,
 .footnotes {
-    font-size: 0.8em;
+    font-size: $small-font-size;
     padding-left: 0;
     padding-right: 0;
 }
@@ -126,11 +126,15 @@ strong {
 p, pre {
     margin: 1em 0;
 }
-p.meta {
-    color: $meta-color;
-}
 p {
     line-height: 1.5em;
+}
+p.meta {
+    margin-top: 2.5em;
+    color: $meta-color;
+    font-family: $headline-font-family;
+    font-size: $small-font-size;
+    text-transform: uppercase;
 }
 a {
     color: $link-color;
@@ -161,7 +165,7 @@ code {
 pre {
     max-width: 100%;
     @include respond-to(phones)  { font-size: 0.66em; }
-    @include respond-to(tablets) { font-size: 0.8em; }
+    @include respond-to(tablets) { font-size: $small-font-size; }
 }
 pre code {
     padding: 1em 1.2em !important;

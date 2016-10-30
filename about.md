@@ -18,7 +18,7 @@ When I'm not busy doing that, I sometimes [tweet](https://twitter.com/Doersino),
 
 This [Jekyll](https://jekyllrb.com) blog is hosted on [Uberspace](https://uberspace.de). Headlines are set in [Montserrat](https://fonts.google.com/specimen/Montserrat), code is displayed in [Fira Code](https://github.com/tonsky/FiraCode) and everything else uses the [Asap](https://fonts.google.com/specimen/Asap) font -- except for math, which is displayed using [MathJax](https://www.mathjax.org) and configured to use the [TeX Gyre Pagella](http://www.gust.org.pl/projects/e-foundry/tex-gyre/pagella) font. [Bigfoot](http://www.bigfootjs.com) helps making footnotes easy to use.
 
-![]({{ "/static/me.jpg" | relative_url }}){:class="wide endimg"}
+![]({{ "/static/me.jpg" | relative_url }}){: .endimg}
 
 <canvas id="canvas" style="display: none;"></canvas>
 <script>
