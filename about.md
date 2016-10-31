@@ -9,8 +9,19 @@ Until early 2017, I'll be working on my [bachlors thesis](http://db.inf.uni-tueb
 
 When I'm not busy doing that, I sometimes [tweet](https://twitter.com/Doersino), work on [open-source projects](https://github.com/doersino), take [pictures](http://instagram.com/doersino) on my phone, or listen to [music](https://bandcamp.com/noah).
 
+
 <!-- TODO [Here's my CV.]({{ "/static/cv.pdf" | relative_url }})-->
-<!-- TODO encoded email? -->
+<!-- TODO encoded email?
+
+```
+# Prints my email address.
+#!/bin/env bash
+M=$'\161\142\162\145\146\166\141\142'
+E='$M'@$'\164\172\156\166\171\056\160\142\172'
+echo $E | tr '[no-yzab-m]' '[ab-z]'
+```
+
+-->
 <!-- TODO http://www.joereiss.net/geek/geek.html-->
 
 

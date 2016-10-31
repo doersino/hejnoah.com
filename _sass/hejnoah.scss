@@ -135,6 +135,13 @@ p.meta {
     font-family: $headline-font-family;
     font-size: $small-font-size;
     text-transform: uppercase;
+
+    & span:after {
+        @include respond-to(phones) {
+            content: "\a";
+            white-space: pre;
+        }
+    }
 }
 a {
     color: $link-color;
