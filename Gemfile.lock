@@ -3,8 +3,11 @@ GEM
   specs:
     addressable (2.4.0)
     colorator (1.1.0)
+    cssminify (1.0.2)
+    execjs (2.7.0)
     ffi (1.9.14)
     forwardable-extended (2.6.0)
+    htmlcompressor (0.3.1)
     jekyll (3.3.0)
       addressable (~> 2.4)
       colorator (~> 1.0)
@@ -18,10 +21,16 @@ GEM
       safe_yaml (~> 1.0)
     jekyll-feed (0.8.0)
       jekyll (~> 3.3)
+    jekyll-minifier (0.0.9)
+      cssminify (~> 1.0)
+      htmlcompressor (~> 0.3)
+      jekyll (~> 3.0)
+      uglifier (~> 2.7)
     jekyll-sass-converter (1.4.0)
       sass (~> 3.4)
     jekyll-watch (1.5.0)
       listen (~> 3.0, < 3.1)
+    json (2.0.2)
     kramdown (1.12.0)
     liquid (3.0.6)
     listen (3.0.8)
@@ -36,6 +45,9 @@ GEM
     rouge (1.11.1)
     safe_yaml (1.0.4)
     sass (3.4.22)
+    uglifier (2.7.2)
+      execjs (>= 0.3.0)
+      json (>= 1.8.0)
 
 PLATFORMS
   ruby
@@ -43,6 +55,7 @@ PLATFORMS
 DEPENDENCIES
   jekyll (= 3.3.0)
   jekyll-feed (~> 0.6)
+  jekyll-minifier
 
 RUBY VERSION
    ruby 2.0.0p648
