@@ -169,6 +169,9 @@ code {
         text-rendering: optimizeSpeed;
     }
 }
+.language-text code {
+    text-rendering: optimizeSpeed;
+}
 pre {
     max-width: 100%;
     @include respond-to(phones)  { font-size: 0.66em; }
