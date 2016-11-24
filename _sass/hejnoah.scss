@@ -176,16 +176,18 @@ a {
 }
 code {
     font-family: $code-font-family;
-    text-rendering: optimizeLegibility;
+    text-rendering: optimizeSpeed;
     background-color: #eee;
     padding: 0.1em 0.2em;
+}
+.language-haskell code {
+
+    // enable ligatures
+    text-rendering: optimizeLegibility;
 
     &:hover {
         text-rendering: optimizeSpeed;
     }
-}
-.language-text code {
-    text-rendering: optimizeSpeed;
 }
 pre {
     max-width: 100%;
