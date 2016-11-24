@@ -69,7 +69,7 @@ article {
     margin-bottom: 5em;
 }
 
-h1, h2, h3, p, pre, .logo, .MathJax_Display {
+h1, h2, h3, p, pre, ul, ol, .logo, .MathJax_Display {
     padding-left: $desktop-margin;
     padding-right: $desktop-margin;
     width: 100%;
@@ -123,8 +123,23 @@ h3 a {
 strong {
     font-weight: bold;
 }
-p, pre {
-    margin: 1em 0;
+p, pre, li {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+ul li {
+    list-style-type: disc;
+}
+ol li {
+    list-style-type: decimal;
+}
+li {
+    line-height: 1.5em;
+    margin-left: 2.33em;
+}
+li > p {
+    padding-left: 0;
+    padding-right: 0;
 }
 p {
     line-height: 1.5em;
