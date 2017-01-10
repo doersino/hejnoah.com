@@ -177,14 +177,9 @@ a {
 }
 code {
     font-family: $code-font-family;
-    text-rendering: optimizeSpeed;
+    text-rendering: optimizeLegibility;  // enable ligatures
     background-color: #eee;
     padding: 0.1em 0.2em;
-}
-.language-haskell code {
-
-    // enable ligatures
-    text-rendering: optimizeLegibility;
 
     &:hover {
         text-rendering: optimizeSpeed;
