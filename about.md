@@ -105,7 +105,7 @@ This [Jekyll](https://jekyllrb.com) blog is hosted on [Uberspace](https://ubersp
         // account for retina factor, but making things a bit smaller on mobile
         function s(n) {
             if (w / dpr < 500) {
-                return n * (dpr/2.5);
+                return n * (dpr/3);
             }
             return n * (dpr/2);
         }
