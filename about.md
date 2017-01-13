@@ -47,14 +47,13 @@ This [Jekyll](https://jekyllrb.com) blog is hosted on [Uberspace](https://ubersp
         // set height and width correctly on retina devices
         var w = logo.offsetWidth;
         var h = logo.offsetHeight;
+        var dpr = 1;
         if (window.devicePixelRatio) {
-            var dpr = window.devicePixelRatio;
+            dpr = window.devicePixelRatio;
             canvas.style.width = w + "px";
             canvas.style.height = h + "px";
             w = w * dpr;
             h = h * dpr;
-        } else {
-            var dpr = 1;
         }
         canvas.setAttribute("width", w);
         canvas.setAttribute("height", h);
@@ -103,6 +102,14 @@ This [Jekyll](https://jekyllrb.com) blog is hosted on [Uberspace](https://ubersp
             return -n;
         }
 
+        // account for retina factor, but making things a bit smaller on mobile
+        function s(n) {
+            if (w / dpr < 500) {
+                return n * (dpr/2.5);
+            }
+            return n * (dpr/2);
+        }
+
         // select which art is going to be shown
         var arts = ["cogs", "raindrops", "starfield", "brownian"];
         var art = arts[Math.floor(Math.random()*arts.length)];
@@ -120,11 +127,11 @@ This [Jekyll](https://jekyllrb.com) blog is hosted on [Uberspace](https://ubersp
                 var x = rand() * w;
                 var y = rand() * h;
                 var p = [x,y];
-                var r = 50 + rand() * 60;
+                var r = s(50 + rand() * 60);
 
                 var okay = true;
                 for (var j = 0; j < points.length; j++) {
-                    if (eucl(points[j], p) < r + radiuses[j] + 30) {
+                    if (eucl(points[j], p) < r + radiuses[j] + s(30)) {
                         okay = false;
                         break;
                     }
@@ -155,23 +162,23 @@ This [Jekyll](https://jekyllrb.com) blog is hosted on [Uberspace](https://ubersp
                     var t = parseInt(r * 0.18);
 
                     // draw outline
-                    var segLen = 1/t * 2 * Math.PI * 0.5;
-                    for (var j = 0; j < t; j++) {
+                    var segLen = s(1/t) * 2 * Math.PI * 0.5;
+                    for (var j = 0; s(j) < t; j++) {
                         c.beginPath();
                         c.arc(x, y, r, a, a + segLen, false);
-                        c.arc(x, y, r - 13, a + segLen, a + 2 * segLen, false);
+                        c.arc(x, y, r - s(13), a + segLen, a + 2 * segLen, false);
                         c.arc(x, y, r, a + 2 * segLen, a + 3 * segLen, false);
-                        c.lineWidth = 3;
+                        c.lineWidth = s(3);
                         c.strokeStyle = "white";
                         c.stroke();
 
-                        a += 1/t * 2 * Math.PI;
+                        a += s(1/t) * 2 * Math.PI;
                     }
 
                     // draw center circle
                     c.beginPath();
-                    c.arc(x, y, 10, 0, 2 * Math.PI, false);
-                    c.lineWidth = 3;
+                    c.arc(x, y, s(10), 0, 2 * Math.PI, false);
+                    c.lineWidth = s(3);
                     c.strokeStyle = "white";
                     c.stroke();
 
@@ -184,7 +191,7 @@ This [Jekyll](https://jekyllrb.com) blog is hosted on [Uberspace](https://ubersp
             // generate points and initial ages
             var points = [];
             var ages = [];
-            for (var i = 0; i < (w * h) / 100000 + 15 * rand(); i++) {
+            for (var i = 0; s(i) < (w * h) / 100000 + 15 * rand(); i++) {
                 var x = rand() * w;
                 var y = rand() * h;
                 var p = [x,y];
@@ -217,8 +224,8 @@ This [Jekyll](https://jekyllrb.com) blog is hosted on [Uberspace](https://ubersp
                         var len = clamp(1/20 * 2 * Math.PI * (1 - (clamp(a-20, 0, 100))/(100-20)), 0, 1);
                         for (var j = 0; j < 20; j++) {
                             c.beginPath();
-                            c.arc(x, y, 2.5 * a, prev, prev + len, false);
-                            c.lineWidth = 3;
+                            c.arc(x, y, s(2.5) * a, prev, prev + len, false);
+                            c.lineWidth = s(3);
                             c.strokeStyle = "white";
                             c.stroke();
 
@@ -258,7 +265,7 @@ This [Jekyll](https://jekyllrb.com) blog is hosted on [Uberspace](https://ubersp
                     }
 
                     // compute radius
-                    var r = 50 * (Math.abs(px-mx) + Math.abs(py-my)) / (w + h);
+                    var r = s(55) * (Math.abs(px-mx) + Math.abs(py-my)) / (w + h);
 
                     // draw star
                     c.beginPath()
@@ -280,7 +287,7 @@ This [Jekyll](https://jekyllrb.com) blog is hosted on [Uberspace](https://ubersp
             var points = [];
             var sizes = [];
             var speeds = [];
-            for (var i = 0; i < 100 + rand() * 400; i++) {
+            for (var i = 0; s(i) < 100 + rand() * 400; i++) {
                 var x = rand() * w;
                 var y = rand() * h;
                 var p = [x,y];
@@ -304,8 +311,8 @@ This [Jekyll](https://jekyllrb.com) blog is hosted on [Uberspace](https://ubersp
                         clamp(speeds[i][1] + (rands()) * 0.2, -1, 1)
                     ];
 
-                    var x = p[0] + speeds[i][0] * 3;
-                    var y = p[1] + speeds[i][1] * 3;
+                    var x = p[0] + speeds[i][0] * s(3);
+                    var y = p[1] + speeds[i][1] * s(3);
 
                     // if out of bounds, make sure particle will move back into
                     // visible part of canvas
@@ -316,9 +323,9 @@ This [Jekyll](https://jekyllrb.com) blog is hosted on [Uberspace](https://ubersp
 
                     // draw particle
                     c.beginPath();
-                    c.arc(x, y, sizes[i] * 10, 0, 2 * Math.PI, false);
+                    c.arc(x, y, sizes[i] * s(10), 0, 2 * Math.PI, false);
                     c.closePath();
-                    c.lineWidth = 20 * sizes[i];
+                    c.lineWidth = s(20) * sizes[i];
                     c.strokeStyle = "white";
                     c.stroke();
                 }
