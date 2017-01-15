@@ -1,5 +1,5 @@
-$break-small:  600px;
-$break-medium: 1280px;
+$break-small:  550px;
+$break-medium: 1100px;
 
 @mixin respond-to($media) {
   @if $media == phones {
@@ -83,6 +83,7 @@ h1, h2, h3, p, pre, ul, ol, .logo, .MathJax_Display {
     @include respond-to(tablets) {
         padding-left: $tablet-margin;
         padding-right: $tablet-margin;
+        max-width: calc(#{$content-max-width} - 2 * (#{$desktop-margin} - #{$tablet-margin}));
     }
 }
 
