@@ -4,10 +4,10 @@ title: About
 permalink: /about/
 ---
 
-I'm Noah Doersing, and I’m currently studying media informatics in [Tübingen](http://www.uni-tuebingen.de/en/faculties/faculty-of-science/departments/computer-science/department.html).
-Until early 2017, I'll be working on my [bachlors thesis](http://db.inf.uni-tuebingen.de/theses/KernelLanguagetoLLVMCompiler.html) at the Database Research Group. Afterwards, I'm planning to aim for a related MSc degree.
+I'm Noah Doersing, and I’m currently enrolled in the media informatics master program in [Tübingen](http://www.uni-tuebingen.de/en/faculties/faculty-of-science/departments/computer-science/department.html).
+<!--Until early 2017, I'll be working on my [bachlors thesis](http://db.inf.uni-tuebingen.de/theses/KernelLanguagetoLLVMCompiler.html) at the Database Research Group. Afterwards, I'm planning to aim for a related MSc degree.-->
 
-When I'm not busy doing that, I sometimes [tweet](https://twitter.com/Doersino), work on [open-source projects](https://github.com/doersino), take [pictures](http://instagram.com/doersino) on my phone, or listen to [music](https://bandcamp.com/noah).
+When I'm not busy studying, I sometimes [tweet](https://twitter.com/Doersino), work on [open-source projects](https://github.com/doersino), take [pictures](http://instagram.com/doersino) on my phone, or listen to [music](https://bandcamp.com/noah).
 
 *If you want to contact me, please feel free to <a href="mailto:&#100;&#111;&#101;&#x72;&#115;&#105;&#x6e;&#111;&#43;&#104;&#101;&#x6a;&#110;&#111;&#x61;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#109;">send an email</a>, [tweet at me](https://twitter.com/Doersino) or [ask me anything](http://neondust.tumblr.com/ask).*
 
@@ -110,9 +110,17 @@ This [Jekyll](https://jekyllrb.com) blog is hosted on [Uberspace](https://ubersp
             return n * (dpr/2);
         }
 
+        function topx(x) {
+            // TODO special case for mobile: / 700?
+            return x * 7 * (w/1000); // because input values expressed in percent in relation to width of 1000
+        }
+
+        var logoratio = 27.0 / 89.0;
+
         // select which art is going to be shown
         var arts = ["cogs", "raindrops", "starfield", "brownian"];
         var art = arts[Math.floor(Math.random()*arts.length)];
+        art = "cogs";
 
         if (art == "cogs") {
 
@@ -124,14 +132,14 @@ This [Jekyll](https://jekyllrb.com) blog is hosted on [Uberspace](https://ubersp
             var speeds = [];
             var angles = [];
             while (true) {
-                var x = rand() * w;
-                var y = rand() * h;
+                var x = rand() * 100;
+                var y = rand() * logoratio * 100;
                 var p = [x,y];
-                var r = s(50 + rand() * 60);
+                var r = 2 + rand() * 2.5;
 
                 var okay = true;
                 for (var j = 0; j < points.length; j++) {
-                    if (eucl(points[j], p) < r + radiuses[j] + s(30)) {
+                    if (eucl(points[j], p) < r + radiuses[j] + 1.5) {
                         okay = false;
                         break;
                     }
@@ -159,26 +167,26 @@ This [Jekyll](https://jekyllrb.com) blog is hosted on [Uberspace](https://ubersp
                     var y = points[i][1];
                     var r = radiuses[i];
                     var a = angles[i];
-                    var t = parseInt(r * 0.18);
+                    var t = parseInt(r * 4);
 
                     // draw outline
-                    var segLen = s(1/t) * 2 * Math.PI * 0.5;
-                    for (var j = 0; s(j) < t; j++) {
+                    var segLen = 1/t * 2 * Math.PI * 0.5;
+                    for (var j = 0; j < t; j++) {
                         c.beginPath();
-                        c.arc(x, y, r, a, a + segLen, false);
-                        c.arc(x, y, r - s(13), a + segLen, a + 2 * segLen, false);
-                        c.arc(x, y, r, a + 2 * segLen, a + 3 * segLen, false);
-                        c.lineWidth = s(3);
+                        c.arc(topx(x), topx(y), topx(r), a, a + segLen, false);
+                        c.arc(topx(x), topx(y), topx(r - 0.6), a + segLen, a + 2 * segLen, false);
+                        c.arc(topx(x), topx(y), topx(r), a + 2 * segLen, a + 3 * segLen, false);
+                        c.lineWidth = topx(0.15);
                         c.strokeStyle = "white";
                         c.stroke();
 
-                        a += s(1/t) * 2 * Math.PI;
+                        a += 1/t * 2 * Math.PI;
                     }
 
                     // draw center circle
                     c.beginPath();
-                    c.arc(x, y, s(10), 0, 2 * Math.PI, false);
-                    c.lineWidth = s(3);
+                    c.arc(topx(x), topx(y), topx(0.45), 0, 2 * Math.PI, false);
+                    c.lineWidth = topx(0.15);
                     c.strokeStyle = "white";
                     c.stroke();
 
