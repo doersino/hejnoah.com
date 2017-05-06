@@ -6,7 +6,7 @@
     <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
     <link rel="shortcut icon" href="{{ "/assets/favicon.png" | relative_url }}">
     <link rel="apple-touch-icon" href="{{ "/assets/favicon.png" | relative_url }}">
-    <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+    <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}?{{ site.time | date: '%y%m%d' }}">
     <!-- see footer.html for webfont loading -->
     {% if page.usemath %}
         {% include mathjax_support.html %}
