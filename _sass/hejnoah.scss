@@ -195,12 +195,17 @@ a {
 //}
 code {
     font-family: $code-font-family;
-    text-rendering: optimizeLegibility;  // enable ligatures
     background-color: #eee;
     padding: 0.1em 0.2em;
 
+    // enable ligatures
+    text-rendering: optimizeLegibility;
+    font-variant-ligatures: discretionary-ligatures;
+
     &:hover {
+        // disable ligatures
         text-rendering: optimizeSpeed;
+        font-variant-ligatures: none;
     }
 }
 pre {
