@@ -6,7 +6,7 @@ permalink: /about/
 
 I'm Noah Doersing, and I’m currently enrolled in the media informatics master program in [Tübingen](http://www.uni-tuebingen.de/en/faculties/faculty-of-science/departments/computer-science/department.html), on track to graduate in 2019. When I'm not busy studying, I sometimes [tweet](https://twitter.com/Doersino), work on various [open-source projects](https://github.com/doersino), take pictures [on my phone](http://instagram.com/doersino) and less frequently [with proper cameras](http://aufgeloest.tumblr.com/), or listen to [music](https://bandcamp.com/noah).
 
-<script src="https://use.fontawesome.com/8214e5bc91.js"></script>
+<script async src="https://use.fontawesome.com/8214e5bc91.js"></script>
 <p class="social">
     <a href="https://twitter.com/Doersino" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
     <a href="https://github.com/doersino" title="GitHub"><i class="fa fa-github" aria-hidden="true"></i></a>
