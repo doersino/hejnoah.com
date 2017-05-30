@@ -1,3 +1,5 @@
 # hejnoah.com
 
-Source code (and contents) of my [Jekyll](https://jekyllrb.com)-based [website](https://hejnoah.com).
+My personal website and blog, [hejnoah.com](https://hejnoah.com).
+
+Feedback and contributions are welcome, see [here](https://hejnoah.com/about/).
