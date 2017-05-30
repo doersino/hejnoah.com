@@ -14,14 +14,14 @@ I'm Noah Doersing, and I’m currently enrolled in the media informatics master 
     <a href="mailto:&#100;&#111;&#101;&#x72;&#115;&#105;&#x6e;&#111;&#43;&#104;&#101;&#x6a;&#110;&#111;&#x61;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#109;" title="Email"><i class="fa fa-at" aria-hidden="true"></i></a>
 </p>
 
-*If you want to contact me, please feel free to <a href="mailto:&#100;&#111;&#101;&#x72;&#115;&#105;&#x6e;&#111;&#43;&#104;&#101;&#x6a;&#110;&#111;&#x61;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#109;">send an email</a>, [tweet at me](https://twitter.com/Doersino) or [ask me anything](http://neondust.tumblr.com/ask).*
+*If you've come across an error in a post, however mundane it may be, you're very welcome to [file an issue](https://github.com/doersino/hejnoah.com/issues/new) or, better yet, [send a pull request](https://github.com/doersino/hejnoah.com) (in which case you'll be [listed as a contributor](https://github.com/doersino/hejnoah.com/graphs/contributors)).*
 
 <!-- TODO [Here's my CV.]({{ "/static/cv.pdf" | relative_url }})-->
 
 
 ## Colophon
 
-This [Jekyll](https://jekyllrb.com) blog is hosted on [Uberspace](https://uberspace.de). Headlines are set in [Montserrat](https://fonts.google.com/specimen/Montserrat), code is displayed in [Fira Code](https://github.com/tonsky/FiraCode) and everything else uses the [Asap](https://fonts.google.com/specimen/Asap) font -- except for math, which is displayed using [MathJax](https://www.mathjax.org) and configured to use the [TeX Gyre Pagella](http://www.gust.org.pl/projects/e-foundry/tex-gyre/pagella) font. [Bigfoot](http://www.bigfootjs.com) helps making footnotes easy to use.
+This [Jekyll](https://jekyllrb.com) blog is hosted on [Uberspace](https://uberspace.de). Headlines are set in [Montserrat](https://fonts.google.com/specimen/Montserrat), code is displayed in [Fira Code](https://github.com/tonsky/FiraCode) and everything else uses the [Asap](https://fonts.google.com/specimen/Asap) font -- except for math, which is displayed using [MathJax](https://www.mathjax.org) and configured to use the [TeX Gyre Pagella](http://www.gust.org.pl/projects/e-foundry/tex-gyre/pagella) font. [Bigfoot](http://www.bigfootjs.com) helps make footnotes easy to use.
 
 ![]({{ "/static/me.jpg" | relative_url }}){: .endimg}
 

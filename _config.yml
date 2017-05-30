@@ -19,8 +19,6 @@ description: > # this means to ignore newlines until "baseurl:"
   Hey there! I’m Noah Doersing, and I’m currently studying media informatics in Tübingen.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://hejnoah.com" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: Doersino
-github_username:  doersino
 permalink: /posts/:title.html
 
 # Build settings
