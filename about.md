@@ -14,7 +14,7 @@ I'm Noah Doersing, and I’m currently enrolled in the media informatics master 
     <a href="mailto:&#100;&#111;&#101;&#x72;&#115;&#105;&#x6e;&#111;&#43;&#104;&#101;&#x6a;&#110;&#111;&#x61;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#109;" title="Email"><i class="fa fa-at" aria-hidden="true"></i></a>
 </p>
 
-*If you've come across an error in a post, however mundane it may be, you're very welcome to [file an issue](https://github.com/doersino/hejnoah.com/issues/new) or, better yet, [send a pull request](https://github.com/doersino/hejnoah.com) (in which case you'll be [listed as a contributor](https://github.com/doersino/hejnoah.com/graphs/contributors)).*
+*If you've come across an error in a post, even if it's only a typo, you're very welcome to [file an issue](https://github.com/doersino/hejnoah.com/issues/new) or, better yet, [send a pull request](https://github.com/doersino/hejnoah.com) (in which case you'll be [listed as a contributor](https://github.com/doersino/hejnoah.com/graphs/contributors)).*
 
 <!-- TODO [Here's my CV.]({{ "/static/cv.pdf" | relative_url }})-->
 
