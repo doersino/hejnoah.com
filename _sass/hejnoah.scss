@@ -92,6 +92,10 @@ h1, h2, h3, p, pre, ul, ol, .logo, .MathJax_Display {
     font-size: $small-font-size;
     padding-left: 0;
     padding-right: 0;
+
+    // fix for footnotes in headings
+    font-family: $base-font-family;
+    text-transform: none;
 }
 
 .MathJax,
