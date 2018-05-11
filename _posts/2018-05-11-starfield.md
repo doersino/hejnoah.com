@@ -6,7 +6,7 @@ usemath:      true
 usefootnotes: true
 ---
 
-Do you remember the old [starfield screensaver](https://www.youtube.com/watch?v=n3n3m2B0KFo) from back when Windows still had sensible version numbers? Although that was mostly before my time, I vaguely remember using a computer that came with it when I was around elementary school age. [^eisenbahn]
+Do you remember the old [Starfield screensaver](https://www.youtube.com/watch?v=n3n3m2B0KFo) from back when Windows still had sensible version numbers? Although that was mostly before my time, I vaguely remember using a computer that came with it when I was around elementary school age. [^eisenbahn]
 
 Today, let's reimplement it (or something close to it, at least) in a couple dozen lines of vanilla JavaScript!
 
