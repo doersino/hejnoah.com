@@ -141,7 +141,8 @@ c.fill();
 ```
 
 Finally, all that's left is to update its position, which can be accomplished by adding a number that grows with increased distance to the center. [^speed]
-```
+
+```js
 // update star
 var nx = x + (x - cx) * 0.025;
 var ny = y + (y - cy) * 0.025;
