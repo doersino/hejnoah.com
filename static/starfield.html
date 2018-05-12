@@ -57,13 +57,6 @@
                 var x = stars[i][0];
                 var y = stars[i][1];
 
-                // reset star if out of bounds
-                if (x < -100 || x > w + 100 || y < -100 || y > h + 100) {
-                    x = cx + rand() * w/10;
-                    y = cy + rand() * w/10;
-                    stars[i] = [x,y];
-                }
-
                 // compute radius depending on euclidean distance from center
                 var r = 0.005 * (Math.sqrt(Math.pow(x - cx, 2) + Math.pow(y - cy, 2)));
                 //var r = 0.005 * (Math.abs(x - cx) + Math.abs(y - cy));
@@ -80,6 +73,13 @@
                 var nx = x + (x - cx) * 0.025;
                 var ny = y + (y - cy) * 0.025;
                 stars[i] = [nx,ny];
+
+                // reset star if out of bounds
+                if (x < -100 || x > w + 100 || y < -100 || y > h + 100) {
+                    x = cx + rand() * w/10;
+                    y = cy + rand() * w/10;
+                    stars[i] = [x,y];
+                }
             }
         }, 1000 / fps);
     </script>

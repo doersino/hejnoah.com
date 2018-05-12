@@ -108,18 +108,7 @@ for (var i = 0; i < stars.length; i++) {
 }
 ```
 
-Now, before drawing each star, we need to check whether it's traveled beyond the edges of the canvas in the previos iteration. There's little need to be precise here – choosing the value `100` lets each star travel quite a bit out of view before being reset, preventing any glitches on large screens where stars might appear quite massive as they approach the edges.
-
-```js
-// reset star if out of bounds
-if (x < -100 || x > w + 100 || y < -100 || y > h + 100) {
-    x = cx + rand() * w/10;
-    y = cy + rand() * w/10;
-    stars[i] = [x,y];
-}
-```
-
-As the stars travel further from the center of the screen and begin to move past your imaginary spaceship, you want them to grow larger. [^realism] Put differently, their radius depends on their distance from the center:
+Now, before drawing each star, we need to consider that as the stars travel further from the center of the screen and begin to move past the imaginary spaceship, you want them to grow larger. [^realism] Put differently, their radius depends on their distance from the center:
 
 ```js
 // compute radius depending on euclidean distance from center
@@ -141,7 +130,7 @@ Observe that the simpler-looking formula returns a larger number. However, this 
 
 In a nutshell: The second formula is fairly close to being correct most of the time[^expensive], but the first one is *always correct*.
 
-After this short diversion, we can finally draw the current star by drawing a white circle (which is really a 360° arc) with the previously computed radius at the correct position. Finally, all that's left is to update its position, which can be accomplished by adding a number that grows with increased distance to the center. [^speed]
+After this short diversion, we can finally draw the current star by drawing a white circle (which is really a 360° arc) with the previously computed radius and located at the correct position.
 
 ```js
 // draw star
@@ -149,11 +138,25 @@ c.beginPath();
 c.arc(x, y, r, 0, 2 * Math.PI, false);
 c.fillStyle = "white";
 c.fill();
+```
 
+Finally, all that's left is to update its position, which can be accomplished by adding a number that grows with increased distance to the center. [^speed]
+```
 // update star
 var nx = x + (x - cx) * 0.025;
 var ny = y + (y - cy) * 0.025;
 stars[i] = [nx,ny];
+```
+
+But wait! We need to check whether the star has traveled beyond the edges of the canvas in the previos iteration. There's no real need to be precise here – choosing the value `100` lets each star travel quite a bit out of view before being reset, preventing any glitches on large screens where stars might appear quite massive as they approach the edges.
+
+```js
+// reset star if out of bounds
+if (x < -100 || x > w + 100 || y < -100 || y > h + 100) {
+    x = cx + rand() * w/10;
+    y = cy + rand() * w/10;
+    stars[i] = [x,y];
+}
 ```
 
 That's all there is to it, really! Once again, you can [see a demo over here]({{ "/static/starfield.html" | relative_url }}).
