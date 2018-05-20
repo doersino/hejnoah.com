@@ -33,3 +33,4 @@ exclude:
 
 jekyll-minifier:
   exclude: 'feed.json'
+  exclude: 'feed.xml'
