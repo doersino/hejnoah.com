@@ -181,7 +181,7 @@ In practice, my attempts to write the required pair of functions have only resul
 
 ```haskell
 itolofi :: Integer -> [Integer]
-itolofi i = map fst $ take (fromIntegral $ l) $ iterate (\(x,y) -> itot y) (itot i')
+itolofi i = map fst $ take (fromIntegral l) $ iterate (\(x,y) -> itot y) (itot i')
   where
     (l,i') = itot i
 
