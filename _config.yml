@@ -26,6 +26,7 @@ markdown: kramdown
 gems:
   - jekyll-feed
   - jekyll-minifier
+  - jekyll/tagging
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -34,3 +35,6 @@ exclude:
 jekyll-minifier:
   exclude: 'feed.json'
   exclude: 'feed.xml'
+
+tag_page_layout: series
+tag_page_dir: series
