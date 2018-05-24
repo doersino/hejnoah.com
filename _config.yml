@@ -31,10 +31,15 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - vendor
+  - README.md
 
 jekyll-minifier:
-  exclude: 'feed.json'
-  exclude: 'feed.xml'
+  exclude:
+    - 'feed.json'
+    - 'feed.xml'
+    - 'assets/mathjax/*'
+    - 'assets/fonts/*'
+    - 'assets/bigfoot/*'
 
 tag_page_layout: series
 tag_page_dir: series

@@ -36,7 +36,6 @@ $phone-margin:      0.7rem;
 
 @import "hejnoah/reset.scss";
 @import "hejnoah/monokai.scss";
-@import "hejnoah/firacode.scss";
 
 *::selection {
   background: $text-color;
@@ -163,6 +162,9 @@ p.meta {
             white-space: pre;
         }
     }
+}
+p.small {
+    font-size: $small-font-size;
 }
 a {
     color: $link-color;

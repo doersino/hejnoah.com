@@ -6,22 +6,20 @@ permalink: /about.html
 
 I'm Noah Doersing, and I’m currently enrolled in the media informatics master program in [Tübingen](http://www.uni-tuebingen.de/en/faculties/faculty-of-science/departments/computer-science/department.html), on track to graduate in 2019. When I'm not busy studying, I sometimes [tweet](https://twitter.com/Doersino), work on various [open-source projects](https://github.com/doersino), take pictures [on my phone](http://instagram.com/doersino) and less frequently [with proper cameras](http://aufgeloest.tumblr.com/), or listen to [music](https://bandcamp.com/noah).
 
-<script async src="https://use.fontawesome.com/8214e5bc91.js"></script>
-<p class="social">
-    <a href="https://twitter.com/Doersino" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-    <a href="https://github.com/doersino" title="GitHub"><i class="fa fa-github" aria-hidden="true"></i></a>
-    <a href="http://instagram.com/doersino" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-    <a href="mailto:&#100;&#111;&#101;&#x72;&#115;&#105;&#x6e;&#111;&#43;&#104;&#101;&#x6a;&#110;&#111;&#x61;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#109;" title="Email"><i class="fa fa-at" aria-hidden="true"></i></a>
-</p>
-
-*If you've come across an error in a post, even if it's only a typo, you're very welcome to [file an issue](https://github.com/doersino/hejnoah.com/issues/new) or, better yet, [send a pull request](https://github.com/doersino/hejnoah.com) (in which case you'll be [listed as a contributor](https://github.com/doersino/hejnoah.com/graphs/contributors)).*
+Want to get in touch? Feel free to [tweet at me](https://twitter.com/Doersino) or [send me an email](mailto:&#100;&#111;&#101;&#x72;&#115;&#105;&#x6e;&#111;&#43;&#104;&#101;&#x6a;&#110;&#111;&#x61;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#109;).
 
 <!-- TODO [Here's my CV.]({{ "/static/cv.pdf" | relative_url }})-->
 
 
 ## Colophon
 
-This [Jekyll](https://jekyllrb.com) blog is hosted on [Uberspace](https://uberspace.de). Headlines are set in [Montserrat](https://fonts.google.com/specimen/Montserrat), code is displayed in [Fira Code](https://github.com/tonsky/FiraCode) and everything else uses the [Asap](https://fonts.google.com/specimen/Asap) font -- except for math, which is displayed using [MathJax](https://www.mathjax.org) and configured to use the [TeX Gyre Pagella](http://www.gust.org.pl/projects/e-foundry/tex-gyre/pagella) font. [Bigfoot](http://www.bigfootjs.com) helps make footnotes easy to use.
+This [Jekyll](https://jekyllrb.com) blog is hosted on [Uberspace](https://uberspace.de). Headlines are set in [Montserrat](https://github.com/JulietaUla/Montserrat), code is displayed in [Fira Code](https://github.com/tonsky/FiraCode) and everything else uses the [Asap](https://www.fontsquirrel.com/fonts/asap) font -- except for math, which is displayed using [MathJax](https://www.mathjax.org) and configured to use the [TeX Gyre Pagella](http://www.gust.org.pl/projects/e-foundry/tex-gyre/pagella) font. [Bigfoot](http://www.bigfootjs.com) helps make footnotes easy to use.
+
+*If you've come across an error in a post (even if it's only a typo), please let me know, preferably by [filing an issue](https://github.com/doersino/hejnoah.com/issues/new) or [sending a pull request](https://github.com/doersino/hejnoah.com) (in which case you'll be [listed as a contributor](https://github.com/doersino/hejnoah.com/graphs/contributors)).*
+
+{:refdef: class="small"}
+This website doesn't employ any external tracking services. All fonts, scripts, stylesheets and images (as well as anything else that is loaded without you, say, clicking a link to a different website) are hosted on this very domain, with no external servers involved whatsoever. The server log files are anonymized. Because of lawyers, there's even a [Datenschutzerklärung]({{ "/imprint.html" | relative_url }}) ready for your enjoyment.
+{: refdef}
 
 ![]({{ "/static/me.jpg" | relative_url }}){: .endimg}
 
