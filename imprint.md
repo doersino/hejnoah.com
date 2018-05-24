@@ -6,7 +6,7 @@ permalink: /imprint.html
 
 <h2>Datenschutzerklärung</h2><h3 id="dsg-general-intro"></h3><p>Diese Datenschutzerklärung klärt Sie über die Art, den Umfang und Zweck der Verarbeitung von personenbezogenen Daten (nachfolgend kurz „Daten“) innerhalb unseres Onlineangebotes und der mit ihm verbundenen Webseiten, Funktionen und Inhalte sowie externen Onlinepräsenzen, wie z.B. unser Social Media Profile auf (nachfolgend gemeinsam bezeichnet als „Onlineangebot“). Im Hinblick auf die verwendeten Begrifflichkeiten, wie z.B. „Verarbeitung“ oder „Verantwortlicher“ verweisen wir auf die Definitionen im Art. 4 der Datenschutzgrundverordnung (DSGVO).<br>
 <br>
-</p><h3 id="dsg-general-controller">Verantwortlicher</h3><p><span class="tsmcontroller">Noah Doersing<br>Schadenweilerstraße 11<br>72108 Rottenburg<br>doersino@gmail.com</span></p><h3 id="dsg-general-datatype">Arten der verarbeiteten Daten:</h3><p>-    Bestandsdaten (z.B., Namen, Adressen).<br>
+</p><h3 id="dsg-general-controller">Verantwortlicher</h3><p><span class="tsmcontroller">Noah Doersing<br>Schadenweilerstraße 11<br>72108 Rottenburg<br>&#100;&#111;&#101;&#x72;&#115;&#105;&#x6e;&#111;&#43;&#104;&#101;&#x6a;&#110;&#111;&#x61;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#109;</span></p><h3 id="dsg-general-datatype">Arten der verarbeiteten Daten:</h3><p>-    Bestandsdaten (z.B., Namen, Adressen).<br>
 -   Kontaktdaten (z.B., E-Mail, Telefonnummern).<br>
 -   Inhaltsdaten (z.B., Texteingaben, Fotografien, Videos).<br>
 -   Nutzungsdaten (z.B., besuchte Webseiten, Interesse an Inhalten, Zugriffszeiten).<br>
