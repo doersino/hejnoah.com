@@ -18,6 +18,7 @@ $break-medium: 1100px;
 $base-font-size:       21px;
 $base-font-family:     Asap, sans-serif;
 $small-font-size:      $base-font-size * 0.8;
+$tiny-font-size:       $small-font-size * 0.8;
 $headline-font-family: Montserrat, sans-serif;
 $code-font-family:     "Fira Code", monospace;
 
@@ -52,7 +53,7 @@ body {
     -webkit-font-smoothing: antialiased;
     background-color: $background-color;
 
-    @include respond-to(phones) { font-size: 18px; }
+    @include respond-to(phones) { font-size: $small-font-size; }
 }
 
 header {
@@ -89,6 +90,7 @@ h1, h2, h3, p, pre, ul, ol, .logo, .MathJax_Display {
 .bigfoot-footnote p,
 .footnotes {
     font-size: $small-font-size;
+    @include respond-to(phones)  { font-size: $tiny-font-size; }
     padding-left: 0;
     padding-right: 0;
 
@@ -163,8 +165,8 @@ p.meta {
         }
     }
 }
-p.small {
-    font-size: $small-font-size;
+p.tiny {
+    font-size: $tiny-font-size;
 }
 a {
     color: $link-color;
@@ -221,7 +223,7 @@ code {
 }
 pre {
     max-width: 100%;
-    @include respond-to(phones)  { font-size: 0.66em; }
+    @include respond-to(phones)  { font-size: $tiny-font-size; }
     @include respond-to(tablets) { font-size: $small-font-size; }
 }
 pre code {
