@@ -6,7 +6,7 @@ layout: default
 
     {{ content }}
 
-    <p class="meta"><time id="postedon" datetime="{{ page.date | date_to_xmlschema }}">posted <span id="postedago"></span> on {{ page.date | date: "%B %-d, %Y" }}</time></p>
+    <p class="meta"><time id="postedon" datetime="{{ page.date | date_to_xmlschema }}">Posted <span id="postedago"></span> on {{ page.date | date: "%B %-d, %Y" }}</time></p>
     <script>
         // dynamically calculate time ago based on http://stackoverflow.com/a/3177838
         function ago(date) {
