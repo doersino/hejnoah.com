@@ -4,7 +4,7 @@ title: About
 permalink: /about.html
 ---
 
-I'm Noah Doersing, and I’m currently enrolled in the media informatics master program in [Tübingen](http://www.uni-tuebingen.de/en/faculties/faculty-of-science/departments/computer-science/department.html), on track to graduate in 2019. When I'm not busy studying, I sometimes [tweet](https://twitter.com/Doersino), work on various [open-source projects](https://github.com/doersino), take pictures [on my phone](http://www.instagram.com/doersino) and less frequently [with proper cameras](http://aufgeloest.tumblr.com/), or listen to [music](https://bandcamp.com/noah).
+I'm Noah Doersing, and I’m currently in the closing stages of the media informatics master program in [Tübingen](http://www.uni-tuebingen.de/en/faculties/faculty-of-science/departments/computer-science/department.html), on track to graduate in late 2019. When I'm not busy studying, I sometimes [tweet](https://twitter.com/Doersino), work on various [open-source projects](https://github.com/doersino), take pictures [on my phone](http://www.instagram.com/doersino) and less frequently [with proper cameras](http://aufgeloest.tumblr.com/), or listen to [music](https://bandcamp.com/noah).
 
 Want to get in touch? Feel free to [tweet at me](https://twitter.com/Doersino) or [send me an email](mailto:&#100;&#111;&#101;&#x72;&#115;&#105;&#x6e;&#111;&#43;&#104;&#101;&#x6a;&#110;&#111;&#x61;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#109;).
 
@@ -18,7 +18,7 @@ This [Jekyll](https://jekyllrb.com) blog is hosted on [Uberspace](https://ubersp
 *If you've come across an error in a post (even if it's only a typo), please let me know, preferably by [filing an issue](https://github.com/doersino/hejnoah.com/issues/new) or [sending a pull request](https://github.com/doersino/hejnoah.com) (in which case you'll be [listed as a contributor](https://github.com/doersino/hejnoah.com/graphs/contributors)).*
 
 {:refdef: class="tiny"}
-This website doesn't employ any external tracking services. All fonts, scripts, stylesheets and images (as well as anything else that is loaded without you, say, clicking a link to a different website) are hosted on this very domain, with no external servers involved whatsoever. The server log files are anonymized. Because of lawyers, there's even a [Datenschutzerklärung]({{ "/imprint.html" | relative_url }}) ready for your enjoyment.
+This website doesn't employ any external tracking services. All fonts, scripts, stylesheets and images (as well as anything else that is loaded without you, say, clicking a link to a different website) are hosted on this very domain, with no external servers involved whatsoever. The server log files are anonymized. _Because of lawyers, there's even a [Datenschutzerklärung]({{ "/imprint.html" | relative_url }}) ready for your enjoyment._
 {: refdef}
 
 ![]({{ "/static/me.jpg" | relative_url }}){: .endimg}
