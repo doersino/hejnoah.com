@@ -1,6 +1,6 @@
 ---
 layout:       post
-title:        "Removing large files from a Git repository's history"
+title:        "Removing Large Files From a Git Repository's History"
 date:         2019-06-28 20:00:00 +0200
 usefootnotes: true
 ---
@@ -31,9 +31,9 @@ git push --force
 
 This might take a few minutes, but Git does a good job keeping you updated on its progress.
 
-Please note that this is a bit of a dangerous operation (it rewrites your repository's entire history, notably changing all commit hashes), so you should check in with your contributors first. It's probably a decent idea to make a full backup, too.
+Please note that this is a bit of a ⚠️dangerous⚠️ operation (it rewrites your repository's entire history, notably changing all commit hashes), so you should check in with your contributors first. It's probably a decent idea to make a full backup, too.
 
 
 
-[^generated]: *Especially* if the files can be regenerated quickly and easily from the repository contents.
+[^generated]: *Especially* if the files can be regenerated quickly and easily from the repository's contents.
 [^why]: In my case, I was frequently adding to a LaTeX-based list of recipes, with a photo for each recipe. I eventually (when the repository's size approached a gigabyte) realized that there was no point in maintaining the resulting PDF in Git, hence this post. (My working copy of the repository also lives in my Dropbox, so I'm able to access the PDF from anywhere, at any time, anyway.)
