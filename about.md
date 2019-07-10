@@ -13,12 +13,12 @@ Want to get in touch? Feel free to [tweet at me](https://twitter.com/Doersino) o
 
 ## Colophon
 
-This [Jekyll](https://jekyllrb.com) blog is hosted on [Uberspace](https://uberspace.de). Headlines are set in [Montserrat](https://github.com/JulietaUla/Montserrat), code is displayed in [Fira Code](https://github.com/tonsky/FiraCode) and everything else uses the [Asap](https://www.fontsquirrel.com/fonts/asap) font -- except for math, which is displayed using [MathJax](https://www.mathjax.org) and configured to use the [TeX Gyre Pagella](http://www.gust.org.pl/projects/e-foundry/tex-gyre/pagella) font. [Bigfoot](http://www.bigfootjs.com) helps make footnotes easy to use.
+This [Jekyll](https://jekyllrb.com) blog was most recently updated on {{ site.time | date: '%B %-d, %Y' }}. It is hosted on [Uberspace](https://uberspace.de) and its source code is available on [GitHub](https://github.com/doersino/hejnoah.com/). Headlines are set in [Montserrat](https://github.com/JulietaUla/Montserrat), code is displayed in [Fira Code](https://github.com/tonsky/FiraCode) and everything else uses the [Asap](https://www.fontsquirrel.com/fonts/asap) font -- except for math, which is displayed using [MathJax](https://www.mathjax.org) and configured to use the [TeX Gyre Pagella](http://www.gust.org.pl/projects/e-foundry/tex-gyre/pagella) font. [Bigfoot](http://www.bigfootjs.com) helps make footnotes easy to use.
 
 *If you've come across an error in a post (even if it's only a typo), please let me know, preferably by [filing an issue](https://github.com/doersino/hejnoah.com/issues/new) or [sending a pull request](https://github.com/doersino/hejnoah.com) (in which case you'll be [listed as a contributor](https://github.com/doersino/hejnoah.com/graphs/contributors)).*
 
 {:refdef: class="tiny"}
-This website doesn't employ any external tracking services. All fonts, scripts, stylesheets and images (as well as anything else that is loaded without you, say, clicking a link to a different website) are hosted on this very domain, with no external servers involved whatsoever. The server log files are anonymized. _Because of lawyers, there's even a [Datenschutzerklärung]({{ "/imprint.html" | relative_url }}) ready for your enjoyment._
+This website doesn't make use of any external tracking services. All fonts, scripts, stylesheets and images (as well as anything else that is loaded without you, say, clicking a link to a different website) are hosted on this very domain, with no external servers involved whatsoever. The server log files are anonymized. _Because of lawyers, there's even a [Datenschutzerklärung]({{ "/imprint.html" | relative_url }}) ready for your perusal._
 {: refdef}
 
 ![]({{ "/static/me.jpg" | relative_url }}){: .endimg}
