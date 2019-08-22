@@ -40,6 +40,7 @@ jekyll-minifier:
     - 'assets/mathjax/*'
     - 'assets/fonts/*'
     - 'assets/bigfoot/*'
+    - 'static/*'
 
 tag_page_layout: series
 tag_page_dir: series

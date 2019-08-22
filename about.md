@@ -17,9 +17,8 @@ This [Jekyll](https://jekyllrb.com) blog was most recently updated on {{ site.ti
 
 *If you've come across an error in a post (even if it's only a typo), please let me know, preferably by [filing an issue](https://github.com/doersino/hejnoah.com/issues/new) or [sending a pull request](https://github.com/doersino/hejnoah.com) (in which case you'll be [listed as a contributor](https://github.com/doersino/hejnoah.com/graphs/contributors)).*
 
-{:refdef: class="tiny"}
+{:.tiny}
 This website doesn't make use of any external tracking services. All fonts, scripts, stylesheets and images (as well as anything else that is loaded without you, say, clicking a link to a different website) are hosted on this very domain, with no external servers involved whatsoever. The server log files are anonymized. _Because of lawyers, there's even a [Datenschutzerklärung]({{ "/imprint.html" | relative_url }}) ready for your perusal._
-{: refdef}
 
 ![]({{ "/static/me.jpg" | relative_url }}){: .endimg}
 
