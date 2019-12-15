@@ -4,7 +4,7 @@ title: About
 permalink: /about.html
 ---
 
-I'm Noah Doersing, and I’m currently in the closing stages of the media informatics master program in [Tübingen](http://www.uni-tuebingen.de/en/faculties/faculty-of-science/departments/computer-science/department.html), on track to graduate in late 2019. When I'm not busy studying, I sometimes [tweet](https://twitter.com/Doersino), work on various [open-source projects](https://github.com/doersino), take pictures [on my phone](http://www.instagram.com/doersino) and less frequently [with proper cameras](http://aufgeloest.tumblr.com/), or listen to [music](https://bandcamp.com/noah).
+I'm Noah Doersing, and I’m currently in-between studying media informatics in [Tübingen](http://www.uni-tuebingen.de/en/faculties/faculty-of-science/departments/computer-science/department.html) and finding a grown-up job (hit me up if you’ve got one to spare!). I sometimes [tweet](https://twitter.com/Doersino), work on various [open-source projects](https://github.com/doersino), take pictures [on my phone](http://www.instagram.com/doersino) and less frequently [with proper cameras](http://aufgeloest.tumblr.com/), or listen to [music](https://bandcamp.com/noah).
 
 Want to get in touch? Feel free to [tweet at me](https://twitter.com/Doersino) or [send me an email](mailto:&#100;&#111;&#101;&#x72;&#115;&#105;&#x6e;&#111;&#43;&#104;&#101;&#x6a;&#110;&#111;&#x61;&#x68;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#109;).
 
