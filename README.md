@@ -1,3 +1,7 @@
+This repository has been archived – I've moved my blog to [excessivelyadequte.com](https://excessivelyadequate.com), an expanded version of the "about" page now lives at [noahdoersing.com](https://noahdoersing.com).
+
+---
+
 # hejnoah.com
 
 My personal website and blog, [hejnoah.com](https://hejnoah.com).
