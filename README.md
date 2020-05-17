@@ -1,4 +1,4 @@
-This repository has been archived – I've moved my blog to [excessivelyadequte.com](https://excessivelyadequate.com), an expanded version of the "about" page now lives at [noahdoersing.com](https://noahdoersing.com).
+This repository has been archived – I've moved my blog to [excessivelyadequate.com](https://excessivelyadequate.com), and an expanded version of the "about" page now lives at [noahdoersing.com](https://noahdoersing.com).
 
 ---
 
