@@ -1,0 +1,5 @@
+{% if site.domain_redirect %}
+<!-- based on https://stackoverflow.com/a/19717455 -->
+<meta http-equiv="refresh" content="0; url={{ site.domain_redirect }}{{ page.url }}">
+<link rel="canonical" href="{{ site.domain_redirect }}{{ page.url }}" />
+{% endif %}
