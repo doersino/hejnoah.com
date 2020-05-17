@@ -44,3 +44,5 @@ jekyll-minifier:
 
 tag_page_layout: series
 tag_page_dir: series
+
+domain_redirect: https://excessivelyadequate.com
